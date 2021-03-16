@@ -5,7 +5,11 @@ import { getCat } from '../modules/data';
 
 const { useEffect } = React;
 
-const DataContainer = (getCat, cat) => {
+const DataContainer = ({ getCat, cat }) => {
+  useEffect(() => {
+    getCat();
+  }, [getCat]);
+
   return <AllCategories cat={cat} getCat={getCat} />;
 };
 

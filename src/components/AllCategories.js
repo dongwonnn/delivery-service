@@ -1,7 +1,6 @@
 import React from 'react';
 
-const AllCategories = ({ cat, getCat }) => {
-  getCat();
+const AllCategories = ({ cat }) => {
   console.log(cat);
   return (
     <div>
