@@ -4,7 +4,6 @@ a, button, input, textarea,
 img, nav,
 ul, ol, li, 
 p,
-h1, h2, h3, h4, h5, h6,
 div, span {
   margin: 0;
   padding: 0;
@@ -12,6 +11,12 @@ div, span {
   /* 폰트 크기 상속 */
   font-size: inherit;
 }
+
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+  padding: 0;
+}
+
 li{
   list-style: none;
 }

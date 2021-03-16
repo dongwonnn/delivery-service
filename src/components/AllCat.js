@@ -9,12 +9,12 @@ const AllCat = ({ cat, loadingCat }) => {
       {!loadingCat && cat && (
         <div className="categories">
           {cat.map((category) => (
-            <Link to={`/category/${category.text}`} key={category.name}>
-              <div className="category">
+            <div className="category" key={category.name}>
+              <Link to={`/category/${category.text}`}>
                 <div className="category-box"></div>
                 <p>{category.text}</p>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       )}

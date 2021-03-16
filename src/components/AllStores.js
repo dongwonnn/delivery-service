@@ -11,22 +11,21 @@ const AllStores = ({ stores, loadingStores }) => {
       {!loadingStores &&
         stores &&
         stores.map((store) => (
-          <Link to={`/detail/${store.name}`} key={store.name}>
-            <div className="item-card">
+          <div className="item-card" key={store.name}>
+            <Link to={`/detail/${store.name}`}>
               <div className="card-img"></div>
               <div className="card-text">
                 <div className="card-name">{store.name}</div>
                 <div className="card-detail">
                   <AiFillStar />
-
                   <p>
                     {store.grade} ({store.feedNum}) · 배달비{' '}
                     {store.deliveryCost}원
                   </p>
                 </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         ))}
     </div>
   );

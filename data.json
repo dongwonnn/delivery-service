@@ -3664,6 +3664,10 @@
 
   "categories": [
     {
+      "name": "all",
+      "text": "전체보기"
+    },
+    {
       "name": "kor",
       "text": "한식"
     },
