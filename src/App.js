@@ -6,10 +6,11 @@ import MainPage from './pages/MainPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
 import ProfilePage from './pages/ProfilePage';
 import SearchPage from './pages/SearchPage';
+import './App.scss';
 
 const App = () => {
   return (
-    <div>
+    <div className="body">
       <Navbar />
 
       <Route path="/" exact={true} component={MainPage} />

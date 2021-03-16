@@ -1,14 +1,13 @@
 import React from 'react';
-import AllCategories from '../components/AllCategories';
-import AllStores from '../components/AllStores';
-import DataContainer from '../containers/DataContainer';
+import Banner from '../components/Banner';
+import AllCatContainer from '../containers/AllCatContainer';
+import './MainPage.scss';
 
 const MainPage = () => {
   return (
-    <div>
-      <AllCategories />
-      <AllStores />
-      <DataContainer />
+    <div className="mainpage">
+      <Banner />
+      <AllCatContainer />
     </div>
   );
 };

@@ -5,16 +5,17 @@ import { getCat } from '../modules/data';
 
 const { useEffect } = React;
 
-const DataContainer = ({ getCat, cat }) => {
+const AllCatContainer = ({ getCat, cat, loadingCat }) => {
   useEffect(() => {
     getCat();
   }, [getCat]);
 
-  return <AllCategories cat={cat} getCat={getCat} />;
+  return <AllCategories cat={cat} getCat={getCat} loadingCat={loadingCat} />;
 };
 
 const mapStateToProps = (state) => ({
   cat: state.data.cat,
+  loadingCat: state.data.GET_CAT,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -23,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DataContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AllCatContainer);
 
 // export default connect(
 //   ({ data }) => ({
@@ -33,4 +34,4 @@ export default connect(mapStateToProps, mapDispatchToProps)(DataContainer);
 //   {
 //     getCat,
 //   },
-// )(DataContainer);
+// )(AllCatContainer);
