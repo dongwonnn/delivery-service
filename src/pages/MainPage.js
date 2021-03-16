@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from '../components/Banner';
 import AllCatContainer from '../containers/AllCatContainer';
+import AllStoresContainer from '../containers/AllStoresContainer';
 import './MainPage.scss';
 
 const MainPage = () => {
@@ -8,6 +9,7 @@ const MainPage = () => {
     <div className="mainpage">
       <Banner />
       <AllCatContainer />
+      <AllStoresContainer />
     </div>
   );
 };

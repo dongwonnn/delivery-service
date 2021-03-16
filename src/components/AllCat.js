@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './AllCategories.scss';
+import './AllCat.scss';
 
-const AllCategories = ({ cat, loadingCat }) => {
+const AllCat = ({ cat, loadingCat }) => {
   return (
-    <div className="AllCategories">
+    <div className="allCat">
       {loadingCat && '로딩 중'}
       {!loadingCat && cat && (
         <div className="categories">
@@ -22,4 +22,4 @@ const AllCategories = ({ cat, loadingCat }) => {
   );
 };
 
-export default AllCategories;
+export default AllCat;

@@ -1,13 +1,12 @@
-.AllCategories{
+.allCat{
     max-width: 1068px;
     margin: 0 auto;
  
     .categories{
         display: flex;
         overflow-x: scroll;
-        margin: 10px 0;
         .category{
-            padding: 20px;
+            padding: 65px 20px;
             .category-box{
                 width: 55px;
                 height: 55px;

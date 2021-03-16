@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AllCategories from '../components/AllCategories';
+import AllCat from '../components/AllCat';
 import { getCat } from '../modules/data';
 
 const { useEffect } = React;
@@ -10,7 +10,7 @@ const AllCatContainer = ({ getCat, cat, loadingCat }) => {
     getCat();
   }, [getCat]);
 
-  return <AllCategories cat={cat} getCat={getCat} loadingCat={loadingCat} />;
+  return <AllCat cat={cat} getCat={getCat} loadingCat={loadingCat} />;
 };
 
 const mapStateToProps = (state) => ({
