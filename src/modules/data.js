@@ -38,11 +38,11 @@ function* getCatSaga() {
 function* getStoresSaga() {
   yield put(startLoading(GET_STORES));
   try {
-    const cat = yield call(api.getStores);
+    const stores = yield call(api.getStores);
 
     yield put({
       type: GET_STORES_SUCCESS,
-      payload: cat.data,
+      payload: stores.data,
     });
   } catch (e) {
     yield put({

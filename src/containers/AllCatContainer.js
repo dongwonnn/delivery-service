@@ -25,13 +25,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllCatContainer);
-
-// export default connect(
-//   ({ data }) => ({
-//     cat: data.cat,
-//     loadingCat: data.loading.GET_CAT,
-//   }),
-//   {
-//     getCat,
-//   },
-// )(AllCatContainer);

@@ -1,13 +1,27 @@
 .AllCategories{
+    max-width: 1068px;
+    margin: 0 auto;
+ 
     .categories{
         display: flex;
+        overflow-x: scroll;
+        margin: 10px 0;
         .category{
-            padding: 10px;
+            padding: 20px;
             .category-box{
-                width: 50px;
-                height: 50px;
+                width: 55px;
+                height: 55px;
+                border-radius: 100%;
                 background-color: #eeeeee;
             }
+            p{
+                text-align: center;
+                font-size: 0.8em;
+                margin-top:5px;
+            }
         }
+    }
+    .categories::-webkit-scrollbar {
+        display: none; 
     }
 }

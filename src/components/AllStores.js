@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './AllStores.scss';
 
-const AllStores = () => {
+const AllStores = ({ stores, loadingStores }) => {
   return (
-    <div>
-      <h1>모든 음식점</h1>
+    <div className="AllStores">
+      {loadingStores && '로딩 중'}
+      {!loadingStores && stores && console.log(stores)}
     </div>
   );
 };

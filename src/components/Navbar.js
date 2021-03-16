@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Navbar.scss';
 
 const Navbar = () => {
   return (
-    <div>
-      <ul>
+    <div className="navbar">
+      <ul className="navbar-item">
         <li>
           <Link to="/">메인</Link>
         </li>
