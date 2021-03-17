@@ -21,8 +21,6 @@ const DetailPage = () => {
     fetchData();
   }, []);
 
-  console.log(datas.menu_category);
-
   if (datas === null) {
     return <div>진행 중..</div>;
   }
@@ -30,24 +28,42 @@ const DetailPage = () => {
   return (
     <div className="detail-page">
       <div className="detail-left">
-        <div className="detail-image">
-          <img src={datas.poster_image} alt="이미지"></img>
-        </div>
-        <div className="detail-category">
+        <img src={datas.poster_image} alt="이미지"></img>
+        <div className="detail-categories">
           {datas.menu_category.map((category) => (
-            <div key={category.name}>{category.name}</div>
+            <div className="detail-category" key={category.name}>
+              <p>{category.name}</p>
+            </div>
           ))}
         </div>
-        <div className="detail-menu"></div>
-        <div className="detail-menu"></div>
-        <div className="detail-menu"></div>
-        <div className="detail-menu"></div>
-        <div className="detail-menu"></div>
+        {datas.menu_category.map((category) => (
+          <div className="detail-menus" key={category.name}>
+            <p className="detail-menus-category">{category.name}</p>
+            {category.menus.map((menu) => (
+              <div className="detail-menu" key={menu.id}>
+                <div className="detail-menu-info">
+                  <p className="menu-title">{menu.title}</p>
+                  <p className="menu-price">{menu.price}</p>
+                  <p className="menu-desc">{menu.description}</p>
+                </div>
+                <img src={menu.image} alt="메뉴 사진"></img>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
 
-      <div className="detail-right">
-        <div className="detail-bill">주문표</div>
-      </div>
+      {/* <div className="detail-right">
+        <div className="detail-bill">
+          <div className="detail-bill-title">
+            <p>주문 표</p>
+          </div>
+          <div className="detail-bill-content">
+            <p>아직 주문 내역이 없습니다.</p>
+          </div>
+          <button>주문하기</button>
+        </div>
+      </div> */}
     </div>
   );
 };
