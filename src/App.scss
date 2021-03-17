@@ -1,10 +1,21 @@
-/* 기본 셋업 */
-header, section, article, aside, footer, main,
-a, button, input, textarea,
-img, nav,
-ul, ol, li, 
+header,
+section,
+article,
+aside,
+footer,
+main,
+a,
+button,
+input,
+textarea,
+img,
+nav,
+ul,
+ol,
+li,
 p,
-div, span {
+div,
+span {
   margin: 0;
   padding: 0;
 
@@ -12,12 +23,17 @@ div, span {
   font-size: inherit;
 }
 
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
 }
 
-li{
+li {
   list-style: none;
 }
 
@@ -38,5 +54,3 @@ a:hover,
 a:active {
   text-decoration: none;
 }
-
-

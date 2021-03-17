@@ -16,10 +16,10 @@ const Navbar = () => {
           <Link to="/orderHistory">주문기록</Link>
         </li>
         <li>
-          <Link to="favorite">즐겨찾기</Link>
+          <Link to="/favorite">즐겨찾기</Link>
         </li>
         <li>
-          <Link to="profile">프로필</Link>
+          <Link to="/profile">프로필</Link>
         </li>
       </ul>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import FavoritePage from './pages/FavoritePage';
 import MainPage from './pages/MainPage';
@@ -7,17 +7,23 @@ import OrderHistoryPage from './pages/OrderHistoryPage';
 import ProfilePage from './pages/ProfilePage';
 import SearchPage from './pages/SearchPage';
 import './App.scss';
+import DetailPage from './pages/DetailPage';
 
 const App = () => {
   return (
     <div className="body">
       <Navbar />
 
-      <Route path="/" exact={true} component={MainPage} />
-      <Route path="/search" exact={true} component={SearchPage} />
-      <Route path="/orderHistory" exact={true} component={OrderHistoryPage} />
-      <Route path="/favorite" exact={true} component={FavoritePage} />
-      <Route path="/profile" exact={true} component={ProfilePage} />
+      <Switch>
+        <Route path="/" exact={true} component={MainPage} />
+        <Route path="/search" component={SearchPage} />
+        <Route path="/orderHistory" component={OrderHistoryPage} />
+        <Route path="/favorite" component={FavoritePage} />
+        <Route path="/profile" component={ProfilePage} />
+        <Route path="/detail/:id" component={DetailPage} />
+
+        <Route render={({ location }) => <div>존재하지 않는 페이지</div>} />
+      </Switch>
     </div>
   );
 };

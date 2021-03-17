@@ -1,0 +1,63 @@
+.detail-page {
+  max-width: 1024px;
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 7fr 3fr;
+
+  column-gap: 20px;
+
+  .detail-left {
+    img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 30px;
+    }
+
+    .detail-store-info {
+      width: 100%;
+      height: 100px;
+      border: 0.5px solid black;
+      margin-bottom: 30px;
+    }
+
+    .detail-category {
+      width: 100%;
+      height: 30px;
+      border: 0.5px solid black;
+      margin-bottom: 30px;
+
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      border: 1px solid red;
+      border-radius: ;
+    }
+
+    .detail-menu {
+      width: 100%;
+      height: 100px;
+      border: 0.5px solid black;
+      margin-bottom: 30px;
+    }
+  }
+
+  .detail-right {
+    .detail-store-info {
+      width: 100%;
+      height: auto;
+      min-height: 300px;
+      border: 1px solid black;
+      margin-bottom: 30px;
+    }
+
+    .detail-bill {
+      width: 100%;
+      height: 300px;
+
+      border: 1px solid black;
+    }
+  }
+}
