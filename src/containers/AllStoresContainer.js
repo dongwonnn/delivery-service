@@ -10,13 +10,7 @@ const AllStoresContainer = ({ getStores, stores, loadingStores }) => {
     getStores();
   }, [getStores]);
 
-  return (
-    <AllStores
-      stores={stores}
-      getStores={getStores}
-      loadingStores={loadingStores}
-    />
-  );
+  return <AllStores stores={stores} loadingStores={loadingStores} />;
 };
 
 const mapStateToProps = (state) => ({

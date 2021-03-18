@@ -11,9 +11,14 @@ const GET_STORES = 'data/GET_STORES';
 const GET_STORES_SUCCESS = 'data/GET_STORES_SUCCESS';
 const GET_STORES_FAILURE = 'data/GET_STORES_FAILURE';
 
+const GET_DETAILS = 'data/GET_DETAILS';
+const GET_DETAILS_SUCCESS = 'data/GET_DETAILS_SUCCESS';
+const GET_DETAILS_FAILURE = 'data/GET_DETAILS_FAILURE';
+
 // 액션 생성 함수
 export const getCat = () => ({ type: GET_CAT });
 export const getStores = () => ({ type: GET_STORES });
+export const getDetails = () => ({ type: GET_DETAILS });
 
 // SAGA 작성
 function* getCatSaga() {
@@ -54,16 +59,37 @@ function* getStoresSaga() {
   yield put(finishLoding(GET_STORES));
 }
 
+function* getDetailsSaga() {
+  yield put(startLoading(GET_DETAILS));
+  try {
+    const details = yield call(api.getDetails);
+
+    yield put({
+      type: GET_DETAILS_SUCCESS,
+      payload: details.data,
+    });
+  } catch (e) {
+    yield put({
+      type: GET_DETAILS_FAILURE,
+      payload: e,
+      error: true,
+    });
+  }
+  yield put(finishLoding(GET_DETAILS));
+}
+
 // SAGA 통합
 export function* dataSaga() {
   yield takeLatest(GET_CAT, getCatSaga);
   yield takeLatest(GET_STORES, getStoresSaga);
+  yield takeLatest(GET_DETAILS, getDetailsSaga);
 }
 
 // 초기값 설정
 const initialStete = {
   cat: null,
   stores: null,
+  details: null,
 };
 
 // 리듀서 작성
@@ -78,6 +104,11 @@ function data(state = initialStete, action) {
       return {
         ...state,
         stores: action.payload,
+      };
+    case GET_DETAILS_SUCCESS:
+      return {
+        ...state,
+        details: action.payload,
       };
     default:
       return state;

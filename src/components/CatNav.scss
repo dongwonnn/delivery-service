@@ -1,0 +1,26 @@
+.catNav {
+  width: 100%;
+  margin-bottom: 20px;
+
+  display: flex;
+  overflow-x: scroll;
+
+  padding-bottom: 20px;
+  border-bottom: 2px solid #eeeeee;
+
+  .catNav-category {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    button {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.catNav::-webkit-scrollbar {
+  display: none;
+}

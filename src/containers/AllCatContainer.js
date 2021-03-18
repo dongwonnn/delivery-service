@@ -10,7 +10,7 @@ const AllCatContainer = ({ getCat, cat, loadingCat }) => {
     getCat();
   }, [getCat]);
 
-  return <AllCat cat={cat} getCat={getCat} loadingCat={loadingCat} />;
+  return <AllCat cat={cat} loadingCat={loadingCat} />;
 };
 
 const mapStateToProps = (state) => ({
