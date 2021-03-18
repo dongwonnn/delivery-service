@@ -18,7 +18,7 @@ const GET_DETAILS_FAILURE = 'data/GET_DETAILS_FAILURE';
 // 액션 생성 함수
 export const getCat = () => ({ type: GET_CAT });
 export const getStores = () => ({ type: GET_STORES });
-export const getDetails = () => ({ type: GET_DETAILS });
+export const getDetails = (id) => ({ type: GET_DETAILS, id });
 
 // SAGA 작성
 function* getCatSaga() {
@@ -59,14 +59,14 @@ function* getStoresSaga() {
   yield put(finishLoding(GET_STORES));
 }
 
-function* getDetailsSaga() {
+function* getDetailsSaga(action) {
   yield put(startLoading(GET_DETAILS));
   try {
-    const details = yield call(api.getDetails);
+    const details = yield call(api.getDetails, action.id);
 
     yield put({
       type: GET_DETAILS_SUCCESS,
-      payload: details.data,
+      payload: details.data.data,
     });
   } catch (e) {
     yield put({

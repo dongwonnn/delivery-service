@@ -5,9 +5,9 @@ import { getDetails } from '../modules/data';
 
 const { useEffect } = React;
 
-const DetailsContainer = ({ getDetails, details, loadingDetails }) => {
+const DetailsContainer = ({ getDetails, details, loadingDetails, id }) => {
   useEffect(() => {
-    getDetails();
+    getDetails(id);
   }, [getDetails]);
 
   return <Details details={details} loadingDetails={loadingDetails} />;
@@ -19,8 +19,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getDetails: () => {
-    dispatch(getDetails());
+  getDetails: (id) => {
+    dispatch(getDetails(id));
   },
 });
 

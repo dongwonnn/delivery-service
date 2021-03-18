@@ -2,7 +2,6 @@ import React from 'react';
 import './DetailMenus.scss';
 
 const DetailMenus = ({ details }) => {
-  console.log(details.data);
   return (
     <div>
       {details.menu_category.map((category) => (
@@ -15,7 +14,11 @@ const DetailMenus = ({ details }) => {
                 <p className="menu-price">{menu.price}</p>
                 <p className="menu-desc">{menu.description}</p>
               </div>
-              <img src={menu.image} alt="메뉴 사진"></img>
+              <img
+                className="detail-menu-img"
+                src={menu.image}
+                alt="메뉴 사진"
+              ></img>
             </div>
           ))}
         </div>

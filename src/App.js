@@ -22,6 +22,12 @@ const App = () => {
         <Route path="/profile" component={ProfilePage} />
         <Route path="/detail/:id" component={DetailPage} />
 
+        {/* <Route
+          path="/detail/:store"
+          exact={true}
+          render={(props) => <DetailPage id={id} {...props} />}
+        /> */}
+
         <Route render={({ location }) => <div>존재하지 않는 페이지</div>} />
       </Switch>
     </div>
