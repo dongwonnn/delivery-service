@@ -1,13 +1,13 @@
 import React from 'react';
 import './CatNav.scss';
 
-const CatNav = ({ details }) => {
+const CatNav = ({ details, viewIndex, moveToPage }) => {
   return (
     <div className="catNav">
       <ul className="catNav-category">
-        {details.menu_category.map((category) => (
-          <li key={category.name}>
-            <button>{category.name}</button>
+        {details.menu_category.map((category, idx) => (
+          <li key={category.name} className={viewIndex === idx ? 'on' : ''}>
+            <button onClick={moveToPage(idx)}>{category.name}</button>
           </li>
         ))}
       </ul>

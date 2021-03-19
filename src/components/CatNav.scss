@@ -1,12 +1,15 @@
 .catNav {
   width: 100%;
-  margin-bottom: 20px;
 
   display: flex;
   overflow-x: scroll;
 
-  padding-bottom: 20px;
+  padding: 10px 0;
   border-bottom: 2px solid #eeeeee;
+  background-color: white;
+
+  position: sticky;
+  top: 0px;
 
   .catNav-category {
     width: 100%;

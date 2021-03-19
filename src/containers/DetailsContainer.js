@@ -8,7 +8,7 @@ const { useEffect } = React;
 const DetailsContainer = ({ getDetails, details, loadingDetails, id }) => {
   useEffect(() => {
     getDetails(id);
-  }, [getDetails]);
+  }, [getDetails, id]);
 
   return <Details details={details} loadingDetails={loadingDetails} />;
 };
