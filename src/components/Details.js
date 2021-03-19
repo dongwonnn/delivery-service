@@ -7,8 +7,8 @@ import './Details.scss';
 const Details = ({ details, loadingDetails }) => {
   const [viewIndex, setViewIndex] = useState(0);
   const contentRef = useRef([]);
+
   const moveToPage = (index) => () => {
-    // do something
     contentRef.current[index].scrollIntoView({
       block: 'start',
       behavior: 'smooth',
@@ -18,9 +18,11 @@ const Details = ({ details, loadingDetails }) => {
   const scrollSpyObserver = new IntersectionObserver(
     (entries) => {
       // do something
-
+      entries.forEach((e, i) => {
+        console.log(e);
+        // console.log(`${i} : ${e.isVisible}`);
+      });
       const { target } = entries.find((entry) => entry.isIntersecting) || {};
-
       setViewIndex(contentRef.current.indexOf(target));
     },
     {
@@ -35,14 +37,14 @@ const Details = ({ details, loadingDetails }) => {
     return () => {
       contentRef.current.forEach((item) => scrollSpyObserver.unobserve(item));
     };
-  }, []);
+  }, [scrollSpyObserver]);
 
   return (
     <div className="detail-page">
       {loadingDetails && '로딩 중'}
       {!loadingDetails && details && (
         <div className="detail-left">
-          <img src={details.poster_image} alt="이미지"></img>
+          <img src={details.poster_image} alt="대표 이미지"></img>
           <CatNav
             details={details}
             viewIndex={viewIndex}

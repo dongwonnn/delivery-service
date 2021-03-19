@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import './DetailMenus.scss';
+import Menu from './Menu';
 
 const DetailMenus = ({ category }, ref) => {
   return (
@@ -9,18 +10,7 @@ const DetailMenus = ({ category }, ref) => {
           {category.name}
         </p>
         {category.menus.map((menu) => (
-          <div className="detail-menu" key={menu.id}>
-            <div className="detail-menu-info">
-              <p className="menu-title">{menu.title}</p>
-              <p className="menu-price">{menu.price}</p>
-              <p className="menu-desc">{menu.description}</p>
-            </div>
-            <img
-              className="detail-menu-img"
-              src={menu.image}
-              alt="메뉴 사진"
-            ></img>
-          </div>
+          <Menu menu={menu} key={menu.id} />
         ))}
       </div>
     </div>

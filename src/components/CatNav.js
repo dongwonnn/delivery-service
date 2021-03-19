@@ -1,7 +1,7 @@
 import React from 'react';
 import './CatNav.scss';
 
-const CatNav = ({ details, viewIndex, moveToPage }) => {
+const CatNav = ({ details, moveToPage, viewIndex }) => {
   return (
     <div className="catNav">
       <ul className="catNav-category">
