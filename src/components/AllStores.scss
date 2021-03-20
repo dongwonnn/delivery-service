@@ -1,33 +1,36 @@
-.allStores{
-    max-width: 1068px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+.allStores {
+  max-width: 1068px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25%, auto));
 
-    column-gap: 45px;
+  column-gap: 45px;
 
-    justify-items: center;
-    align-items: center;
+  justify-items: center;
+  align-items: center;
 
-    .item-card{
-        margin: 15px 0px;
-        width:100%;
-        background-color: #eeeeee;
-        .card-img{
-            width: inherit;
-            padding-bottom: 70%;
-            margin-bottom: 10px;
-            background-color: #eeeeee;
-        }
-        .card-text{
-            background-color: white;
-            .card-detail{
-                display: flex;
-                svg{
-                    font-size: 1.5em;
-                    color: rgb(237, 240, 105);
-                }
-            }
-        }
+  .item-card {
+    margin: 15px 0px;
+    width: 100%;
+    background-color: #eeeeee;
+    .card-img {
+      width: inherit;
+      padding-bottom: 70%;
+      margin-bottom: 10px;
+      background-color: #eeeeee;
     }
+    .card-text {
+      background-color: white;
+
+      width: 100%;
+      white-space: nowrap;
+      .card-detail {
+        display: flex;
+        svg {
+          font-size: 1.5em;
+          color: rgb(237, 240, 105);
+        }
+      }
+    }
+  }
 }

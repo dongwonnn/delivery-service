@@ -1,43 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import CatNav from '../components/CatNav';
 import DetailMenus from '../components/DetailMenus';
 // import { AiFillStar } from 'react-icons/ai';
 import './Details.scss';
 
 const Details = ({ details, loadingDetails }) => {
-  const [viewIndex, setViewIndex] = useState(0);
   const contentRef = useRef([]);
 
   const moveToPage = (index) => () => {
+    console.log(contentRef.current[index]);
+    contentRef.current[index].classList.add('on');
     contentRef.current[index].scrollIntoView({
       block: 'start',
       behavior: 'smooth',
     });
   };
-
-  const scrollSpyObserver = new IntersectionObserver(
-    (entries) => {
-      // do something
-      entries.forEach((e, i) => {
-        console.log(e);
-        // console.log(`${i} : ${e.isVisible}`);
-      });
-      const { target } = entries.find((entry) => entry.isIntersecting) || {};
-      setViewIndex(contentRef.current.indexOf(target));
-    },
-    {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5,
-    },
-  );
-
-  useEffect(() => {
-    contentRef.current.forEach((item) => scrollSpyObserver.observe(item));
-    return () => {
-      contentRef.current.forEach((item) => scrollSpyObserver.unobserve(item));
-    };
-  }, [scrollSpyObserver]);
 
   return (
     <div className="detail-page">
@@ -45,11 +22,7 @@ const Details = ({ details, loadingDetails }) => {
       {!loadingDetails && details && (
         <div className="detail-left">
           <img src={details.poster_image} alt="대표 이미지"></img>
-          <CatNav
-            details={details}
-            viewIndex={viewIndex}
-            moveToPage={moveToPage}
-          />
+          <CatNav details={details} moveToPage={moveToPage} />
           {details.menu_category.map((category, idx) => (
             <DetailMenus
               category={category}
