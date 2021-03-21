@@ -8,6 +8,7 @@ import ProfilePage from './pages/ProfilePage';
 import SearchPage from './pages/SearchPage';
 import './App.scss';
 import DetailPage from './pages/DetailPage';
+import MenuDetailPage from './pages/MenuDetailPage';
 
 const App = () => {
   return (
@@ -20,7 +21,8 @@ const App = () => {
         <Route path="/orderHistory" component={OrderHistoryPage} />
         <Route path="/favorite" component={FavoritePage} />
         <Route path="/profile" component={ProfilePage} />
-        <Route path="/detail/:id" component={DetailPage} />
+        <Route path="/detail/:storeId" exact={true} component={DetailPage} />
+        <Route path="/detail/:storeId/:menuId" component={MenuDetailPage} />
 
         {/* <Route
           path="/detail/:store"

@@ -4,12 +4,11 @@ import DetailMenus from '../components/DetailMenus';
 // import { AiFillStar } from 'react-icons/ai';
 import './Details.scss';
 
-const Details = ({ details, loadingDetails }) => {
+const Details = ({ details, loadingDetails, storeId }) => {
   const contentRef = useRef([]);
 
   const moveToPage = (index) => () => {
     console.log(contentRef.current[index]);
-    contentRef.current[index].classList.add('on');
     contentRef.current[index].scrollIntoView({
       block: 'start',
       behavior: 'smooth',
@@ -23,9 +22,10 @@ const Details = ({ details, loadingDetails }) => {
         <div className="detail-left">
           <img src={details.poster_image} alt="대표 이미지"></img>
           <CatNav details={details} moveToPage={moveToPage} />
-          {details.menu_category.map((category, idx) => (
+          {details.menu_groups.map((category, idx) => (
             <DetailMenus
               category={category}
+              storeId={storeId}
               key={category.name}
               ref={(r) => (contentRef.current[idx] = r)}
             />

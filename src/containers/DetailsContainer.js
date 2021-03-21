@@ -5,12 +5,18 @@ import { getDetails } from '../modules/data';
 
 const { useEffect } = React;
 
-const DetailsContainer = ({ getDetails, details, loadingDetails, id }) => {
+const DetailsContainer = ({ getDetails, details, loadingDetails, storeId }) => {
   useEffect(() => {
-    getDetails(id);
-  }, [getDetails, id]);
+    getDetails(storeId);
+  }, [getDetails, storeId]);
 
-  return <Details details={details} loadingDetails={loadingDetails} />;
+  return (
+    <Details
+      details={details}
+      loadingDetails={loadingDetails}
+      storeId={storeId}
+    />
+  );
 };
 
 const mapStateToProps = (state) => ({
@@ -19,8 +25,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getDetails: (id) => {
-    dispatch(getDetails(id));
+  getDetails: (storeId) => {
+    dispatch(getDetails(storeId));
   },
 });
 

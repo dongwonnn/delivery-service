@@ -15,10 +15,18 @@ const GET_DETAILS = 'data/GET_DETAILS';
 const GET_DETAILS_SUCCESS = 'data/GET_DETAILS_SUCCESS';
 const GET_DETAILS_FAILURE = 'data/GET_DETAILS_FAILURE';
 
+const GET_MENUS = 'data/GET_MENUS';
+const GET_MENUS_SUCCESS = 'data/GET_MENUS_SUCCESS';
+const GET_MENUS_FAILURE = 'data/GET_MENUS_FAILURE';
+
 // 액션 생성 함수
 export const getCat = () => ({ type: GET_CAT });
 export const getStores = () => ({ type: GET_STORES });
-export const getDetails = (id) => ({ type: GET_DETAILS, id });
+export const getDetails = (storeId) => ({ type: GET_DETAILS, storeId });
+export const getMenus = (menuId) => ({
+  type: GET_MENUS,
+  menuId,
+});
 
 // SAGA 작성
 function* getCatSaga() {
@@ -39,7 +47,6 @@ function* getCatSaga() {
   }
   yield put(finishLoding(GET_CAT));
 }
-
 function* getStoresSaga() {
   yield put(startLoading(GET_STORES));
   try {
@@ -58,11 +65,10 @@ function* getStoresSaga() {
   }
   yield put(finishLoding(GET_STORES));
 }
-
 function* getDetailsSaga(action) {
   yield put(startLoading(GET_DETAILS));
   try {
-    const details = yield call(api.getDetails, action.id);
+    const details = yield call(api.getDetails, action.storeId);
 
     yield put({
       type: GET_DETAILS_SUCCESS,
@@ -77,12 +83,31 @@ function* getDetailsSaga(action) {
   }
   yield put(finishLoding(GET_DETAILS));
 }
+function* getMenusSaga(action) {
+  yield put(startLoading(GET_MENUS));
+  try {
+    const menus = yield call(api.getMenus, action.menuId);
+
+    yield put({
+      type: GET_MENUS_SUCCESS,
+      payload: menus.data.data,
+    });
+  } catch (e) {
+    yield put({
+      type: GET_MENUS_FAILURE,
+      payload: e,
+      error: true,
+    });
+  }
+  yield put(finishLoding(GET_MENUS));
+}
 
 // SAGA 통합
 export function* dataSaga() {
   yield takeLatest(GET_CAT, getCatSaga);
   yield takeLatest(GET_STORES, getStoresSaga);
   yield takeLatest(GET_DETAILS, getDetailsSaga);
+  yield takeLatest(GET_MENUS, getMenusSaga);
 }
 
 // 초기값 설정
@@ -90,6 +115,7 @@ const initialStete = {
   cat: null,
   stores: null,
   details: null,
+  menus: null,
 };
 
 // 리듀서 작성
@@ -109,6 +135,11 @@ function data(state = initialStete, action) {
       return {
         ...state,
         details: action.payload,
+      };
+    case GET_MENUS_SUCCESS:
+      return {
+        ...state,
+        menus: action.payload,
       };
     default:
       return state;

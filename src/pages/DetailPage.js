@@ -2,9 +2,9 @@ import React from 'react';
 import DetailsContainer from '../containers/DetailsContainer';
 
 const DetailPage = ({ match }) => {
-  const detailId = match.params.id;
+  const storeId = match.params.storeId;
   // Details.js
-  return <DetailsContainer id={detailId} />;
+  return <DetailsContainer storeId={storeId} />;
 };
 
 export default DetailPage;

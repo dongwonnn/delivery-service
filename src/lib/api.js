@@ -5,7 +5,10 @@ export const getCategories = () =>
 
 export const getStores = () => axios.get('http://localhost:4000/stores');
 
-export const getDetails = (id) =>
+export const getDetails = (storeId) =>
   axios.get(
-    `http://ec2-52-79-243-119.ap-northeast-2.compute.amazonaws.com/api/eateries/${id}`,
+    `https://delivery-service-web.herokuapp.com/api/eateries/${storeId}`,
   );
+
+export const getMenus = (menuId) =>
+  axios.get(`https://delivery-service-web.herokuapp.com/api/menus/${menuId}`);

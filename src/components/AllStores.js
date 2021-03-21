@@ -19,7 +19,7 @@ const AllStores = ({ stores, loadingStores }) => {
                   <AiFillStar />
                   <p>
                     {store.grade} ({store.feedNum}) · 배달비{' '}
-                    {store.deliveryCost}원{/*  */}
+                    {store.deliveryCost}원
                   </p>
                 </div>
               </div>
