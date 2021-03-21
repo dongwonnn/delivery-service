@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import CatNav from '../components/CatNav';
 import DetailMenus from '../components/DetailMenus';
-// import { AiFillStar } from 'react-icons/ai';
+import Bill from './Bill';
+import DeliveryInfo from './DeliveryInfo';
 import './Details.scss';
+import StoreInfo from './StoreInfo';
 
 const Details = ({ details, loadingDetails, storeId }) => {
   const contentRef = useRef([]);
@@ -21,6 +23,8 @@ const Details = ({ details, loadingDetails, storeId }) => {
       {!loadingDetails && details && (
         <div className="detail-left">
           <img src={details.poster_image} alt="대표 이미지"></img>
+          <StoreInfo details={details} />
+          <DeliveryInfo details={details} />
           <CatNav details={details} moveToPage={moveToPage} />
           {details.menu_groups.map((category, idx) => (
             <DetailMenus
@@ -32,32 +36,13 @@ const Details = ({ details, loadingDetails, storeId }) => {
           ))}
         </div>
       )}
+      {!loadingDetails && details && (
+        <div className="detail-right">
+          <Bill />
+        </div>
+      )}
     </div>
   );
 };
 
 export default Details;
-
-// <div className="detail-right">
-//   <div className="detail-bill">
-//     <div className="detail-bill-title">
-//       <p>주문 표</p>
-//     </div>
-//     <div className="detail-bill-content">
-//       <p>아직 주문 내역이 없습니다.</p>
-//     </div>
-//     <button>주문하기</button>
-//   </div>
-//   <div className="detail-store-info">
-//     <h1>가게 이름 : {details.title}</h1>
-//     <div>
-//       별점 :
-//       <AiFillStar />
-//       {details.grade}
-//     </div>
-//     <p>리뷰 개수 : {details.review_count}</p>
-//     <p>배달 시간 : {details.delivery_time}</p>
-//     <p>배달 비 : {details.delivery_charge}</p>
-//     <p>최소 주문 금액 : {details.minimum_order_amount}</p>
-//   </div>
-// </div>

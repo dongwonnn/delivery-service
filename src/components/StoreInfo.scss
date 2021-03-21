@@ -1,0 +1,42 @@
+.store-info {
+  box-shadow: 2px 2px 10px silver;
+  background-color: white;
+
+  position: relative;
+  top: -50px;
+  padding: 20px 0;
+  margin: 0 auto;
+  width: 90%;
+  height: auto;
+
+  .store-into-name {
+    font-size: 1.5rem;
+    font-weight: 550;
+    text-align: center;
+  }
+
+  .store-info-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    vertical-align: middle;
+    svg {
+      font-size: 1.5em;
+      color: #f2c34c;
+      border: 0.1 #f2c34c solid;
+    }
+
+    .store-grade {
+      margin-right: 8px;
+      font-size: 1.2rem;
+    }
+    .store_review {
+      margin-left: 10px;
+    }
+    a {
+      font-size: 0.8rem;
+      color: #4ca6eb;
+    }
+  }
+}
