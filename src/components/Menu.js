@@ -7,7 +7,6 @@ const Menu = ({ menu, menuId }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const onSetIsVisible = (active) => {
-    console.log('123');
     setIsVisible(active);
   };
   return (

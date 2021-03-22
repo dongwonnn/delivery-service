@@ -1,0 +1,23 @@
+$orange: #da6629;
+$grey: #eeeeee;
+
+.select-options {
+  .select-options-cat {
+    background-color: $grey;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    p:nth-child(1) {
+      font-weight: bold;
+    }
+    p:nth-child(2) {
+      color: $orange;
+    }
+  }
+  .select-menu-option {
+    .select-menu-options {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

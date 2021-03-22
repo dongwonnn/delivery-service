@@ -1,15 +1,69 @@
+$grey: #a4adb8;
+
 .detail-menu-modal {
-  background-color: #eeeeee;
-  width: 40%;
+  p {
+    font-size: 1.1rem;
+  }
+  background-color: white;
+  width: 60%;
   min-width: 300px;
   height: 80%;
 
-  overflow-y: scroll;
+  overflow-y: auto;
 
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding: 45px;
+  padding: 20px;
   z-index: 1011;
+
+  .detail-menu-modal-img {
+    width: 100%;
+    height: auto;
+    padding-bottom: 10px;
+  }
+
+  .detail-modal-info {
+    border-bottom: 1px solid $grey;
+    padding: 10px 0;
+    p {
+      color: #a4adb8;
+    }
+  }
+
+  .detail-modal-price {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    p {
+      font-weight: bold;
+    }
+  }
+
+  .detail-modal-count {
+    padding: 10px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      font-weight: bold;
+    }
+  }
+
+  .detail-modal-count-btn {
+    display: flex;
+    align-items: center;
+    p {
+      padding: 0 10px;
+    }
+    button {
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      border-radius: 100%;
+      border: 0.5px solid #939daa;
+    }
+  }
 }
