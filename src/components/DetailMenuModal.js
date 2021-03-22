@@ -42,9 +42,16 @@ const DetailMenuModal = ({ menuId }) => {
     setTotalPrice(totalPrice);
   };
 
+  const onsubmit = (e) => {
+    console.log(e);
+  };
+
   if (detailMenus === null) {
     return <div>로딩 중</div>;
   }
+
+  if (detailMenus.option_groups.length > 0)
+    detailMenus.option_groups.sort((a, b) => b.required - a.required);
 
   return (
     <div className="detail-menu-modal">
@@ -80,6 +87,7 @@ const DetailMenuModal = ({ menuId }) => {
           ))}
         </div>
       )}
+      <button onClick={(e) => onsubmit(e)}>제출</button>
     </div>
   );
 };
