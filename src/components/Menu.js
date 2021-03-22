@@ -6,22 +6,25 @@ import './Menu.scss';
 const Menu = ({ menu, menuId }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const onSetIsVisible = () => {
-    const nextIsVisible = !isVisible;
-    setIsVisible(nextIsVisible);
+  const onSetIsVisible = (active) => {
+    console.log('123');
+    setIsVisible(active);
   };
   return (
-    <div className="menu" onClick={() => onSetIsVisible()}>
-      {isVisible && <BodyBlackoutStyle />}
-      {isVisible && <DetailMenuModal menuId={menu.id} />}
-
-      <div className="menu-info">
-        <p className="menu-title">{menu.name}</p>
-        <p className="menu-price">{menu.price}원</p>
-        <p className="menu-desc">{menu.description}</p>
+    <div>
+      <div className="menu" onClick={() => onSetIsVisible(true)}>
+        <div className="menu-info">
+          <p className="menu-title">{menu.name}</p>
+          <p className="menu-price">{menu.price}원</p>
+          <p className="menu-desc">{menu.description}</p>
+        </div>
+        <div className="menu-img">
+          <img src={menu.image} alt="메뉴 사진" />
+        </div>
       </div>
-      <div className="menu-img">
-        <img src={menu.image} alt="메뉴 사진" />
+      <div>
+        {isVisible && <BodyBlackoutStyle onSetIsVisible={onSetIsVisible} />}
+        {isVisible && <DetailMenuModal menuId={menu.id} />}
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ const Details = ({ details, loadingDetails, storeId }) => {
       {!loadingDetails && details && (
         <div className="detail-left">
           <img src={details.poster_image} alt="대표 이미지"></img>
-          <StoreInfo details={details} />c
+          <StoreInfo details={details} />
           <DeliveryInfo details={details} />
           <CatNav details={details} moveToPage={moveToPage} />
           {details.menu_groups.map((category, idx) => (
