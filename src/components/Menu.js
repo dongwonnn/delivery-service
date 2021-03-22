@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import DetailMenuModal from './DetailMenuModal';
 import './Menu.scss';
 
-const Menu = ({ menu }) => {
+const Menu = ({ menu, menuId }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const onSetIsVisible = () => {
+    const nextIsVisible = !isVisible;
+    setIsVisible(nextIsVisible);
+  };
   return (
-    <div className="menu">
+    <div className="menu" onClick={() => onSetIsVisible()}>
+      {isVisible && <DetailMenuModal menuId={menu.id} />}
+
       <div className="menu-info">
         <p className="menu-title">{menu.name}</p>
         <p className="menu-price">{menu.price}원</p>

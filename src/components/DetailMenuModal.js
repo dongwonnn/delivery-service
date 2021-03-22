@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMenus } from '../modules/data';
-import './MenuDetailPage.scss';
+import './DetailMenuModal.scss';
 
-const DetailMenuModal = ({ match }) => {
-  const menuId = match.params.menuId;
-
+const DetailMenuModal = ({ isVisible, menuId }) => {
   const detailMenus = useSelector((state) => state.data.menus);
 
   const dispatch = useDispatch();
@@ -14,8 +12,12 @@ const DetailMenuModal = ({ match }) => {
     dispatch(getMenus(menuId));
   }, [menuId, dispatch]);
 
+  if (detailMenus === null) {
+    return <div>로딩 중</div>;
+  }
+
   return (
-    <div>
+    <div className="detail-menu-modal">
       <h1>상세 구성</h1>
       <p>{detailMenus.id}</p>
       <p>{detailMenus.name}</p>

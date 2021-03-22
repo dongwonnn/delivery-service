@@ -2,18 +2,15 @@ import React, { forwardRef } from 'react';
 import './DetailMenus.scss';
 import Menu from './Menu';
 
-const DetailMenus = ({ category, storeId }, ref) => {
+const DetailMenus = ({ category }, ref) => {
   return (
     <div>
-      <DetailMenuModal />
       <div className="detailMenus">
         <p className="detailMenus-category" ref={ref}>
           {category.name}
         </p>
         {category.menus.map((menu) => (
-          <div className={menu.id} onClick={}>
-            <Menu menu={menu} storeId={storeId} />
-          </div>
+          <Menu menu={menu} menuId={menu.id} key={menu.id} />
         ))}
       </div>
     </div>

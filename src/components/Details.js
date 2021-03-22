@@ -10,7 +10,6 @@ const Details = ({ details, loadingDetails, storeId }) => {
   const contentRef = useRef([]);
 
   const moveToPage = (index) => () => {
-    console.log(contentRef.current[index]);
     contentRef.current[index].scrollIntoView({
       block: 'start',
       behavior: 'smooth',
@@ -23,7 +22,7 @@ const Details = ({ details, loadingDetails, storeId }) => {
       {!loadingDetails && details && (
         <div className="detail-left">
           <img src={details.poster_image} alt="대표 이미지"></img>
-          <StoreInfo details={details} />
+          <StoreInfo details={details} />c
           <DeliveryInfo details={details} />
           <CatNav details={details} moveToPage={moveToPage} />
           {details.menu_groups.map((category, idx) => (
