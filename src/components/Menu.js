@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import BodyBlackoutStyle from './BodyBlackoutStyle';
 import DetailMenuModal from './DetailMenuModal';
 import './Menu.scss';
 
@@ -11,6 +12,7 @@ const Menu = ({ menu, menuId }) => {
   };
   return (
     <div className="menu" onClick={() => onSetIsVisible()}>
+      {isVisible && <BodyBlackoutStyle />}
       {isVisible && <DetailMenuModal menuId={menu.id} />}
 
       <div className="menu-info">
