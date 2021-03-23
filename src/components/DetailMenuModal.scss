@@ -1,5 +1,6 @@
-$grey: #939daa;
-$orange: #da6629;
+$grey: #f6f6f6;
+$orange: #ea744a;
+$blue: #4eacf8;
 
 .detail-menu-modal {
   p {
@@ -74,6 +75,16 @@ $orange: #da6629;
       .menus-group-name {
         background-color: $grey;
         padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        p:nth-child(1) {
+          font-weight: bold;
+          font-size: 1rem;
+        }
+        p:nth-child(2) {
+          color: $orange;
+          font-size: 1rem;
+        }
       }
       .menus-group-menu {
         display: flex;
@@ -83,6 +94,16 @@ $orange: #da6629;
           margin-right: 5px;
         }
       }
+    }
+  }
+
+  .detail-model-submit {
+    position: sticky;
+    button {
+      background-color: $blue;
+      width: 100%;
+      height: 50px;
+      color: white;
     }
   }
 }
