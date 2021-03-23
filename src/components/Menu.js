@@ -23,7 +23,9 @@ const Menu = ({ menu, menuId }) => {
       </div>
       <div>
         {isVisible && <BodyBlackoutStyle onSetIsVisible={onSetIsVisible} />}
-        {isVisible && <DetailMenuModal menuId={menu.id} />}
+        {isVisible && (
+          <DetailMenuModal menuId={menu.id} setIsVisible={setIsVisible} />
+        )}
       </div>
     </div>
   );

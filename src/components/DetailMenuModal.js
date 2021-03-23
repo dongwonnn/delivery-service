@@ -1,23 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMenus } from '../modules/data';
+import { addCart } from '../modules/cart';
+
 import './DetailMenuModal.scss';
 
 const transStrToInt = (strPrice) => Number(strPrice.replace(',', ''));
 
-const DetailMenuModal = ({ menuId }) => {
-  const detailMenus = useSelector((state) => state.data.menus);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getMenus(menuId));
-  }, [menuId, dispatch]);
-
+const DetailMenuModal = ({ menuId, setIsVisible }) => {
   const [menuCnt, setMenuCnt] = useState(1);
   const [sumMenuPrice, setSumMenuPrice] = useState(0);
   const [defaultPrice, setDefaultPrice] = useState(undefined);
   const [totalPrice, setTotalPrice] = useState(undefined);
-
   const formRef = useRef(null);
+  const detailMenus = useSelector((state) => state.data.menus);
+  const menuDispatch = useDispatch();
+  const cartDispatch = useDispatch();
 
   const onMinusBtn = () => {
     if (menuCnt > 1) {
@@ -33,6 +31,38 @@ const DetailMenuModal = ({ menuId }) => {
     setMenuCnt(nextMenuCnt);
   };
 
+  const onInputBtn = (min, check) => {
+    const formData = new FormData(formRef.current);
+
+    let menuPrice = 0;
+    for (var value of formData.values()) {
+      menuPrice += transStrToInt(value);
+    }
+
+    setSumMenuPrice(menuPrice);
+  };
+
+  const onSubmitBtn = () => {
+    const formData = Array.from(new FormData(formRef.current));
+
+    // for (var key of formData.keys()) {
+    //   console.log(key);
+    // }
+
+    // for (var value of formData.values()) {
+    //   console.log(value);
+    // }
+
+    setIsVisible(false);
+
+    const optionMenus = formData.map((data) => data[0]).join(' , ');
+    cartDispatch(addCart(detailMenus.name, optionMenus, totalPrice));
+  };
+
+  useEffect(() => {
+    menuDispatch(getMenus(menuId));
+  }, [menuId, menuDispatch]);
+
   useEffect(() => {
     const tempPrice = detailMenus
       ? transStrToInt(detailMenus.price)
@@ -41,28 +71,10 @@ const DetailMenuModal = ({ menuId }) => {
     setTotalPrice(tempPrice);
   }, [detailMenus]);
 
-  const onInputBtn = (min, check) => {
-    const formData = new FormData(formRef.current);
-
-    let menuPrice = 0;
-    let size = 0;
-
-    for (var value of formData.values()) {
-      menuPrice += transStrToInt(value);
-      size++;
-    }
-
-    setSumMenuPrice(menuPrice);
-  };
-
   useEffect(() => {
     const nextTotalPrice = defaultPrice * menuCnt + sumMenuPrice * menuCnt;
     setTotalPrice(nextTotalPrice);
   }, [menuCnt, defaultPrice, sumMenuPrice]);
-
-  const onSubmitBtn = () => {
-    const formData = new FormData(formRef.current);
-  };
 
   if (detailMenus === null) {
     return <div>로딩 중</div>;
