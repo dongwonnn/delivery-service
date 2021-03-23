@@ -3,6 +3,7 @@ $orange: #ea744a;
 $blue: #4eacf8;
 
 .bill {
+  min-width: 300px;
   position: sticky;
   top: 5px;
   .bill-title {
@@ -19,17 +20,27 @@ $blue: #4eacf8;
     width: 100%;
     min-height: 200px;
     .bill-content-data {
-      display: flex;
-      flex-direction: column;
-      padding: 10px;
-      p:nth-child(2) {
-        margin-top: 10px;
+      padding: 20px;
+
+      .bill-content-data-header {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        svg {
-          padding-right: 5px;
-          font-size: 1.2rem;
+
+        p:nth-child(2) {
+          display: flex;
+          align-items: center;
+          svg {
+            padding-left: 10px;
+            font-size: 1.2rem;
+          }
         }
+      }
+
+      .bill-content-data-options {
+        font-size: 0.9rem;
+        padding-left: 5px;
+        color: rgb(105, 105, 105);
       }
     }
     .bill-content-not-data {
@@ -41,11 +52,11 @@ $blue: #4eacf8;
     }
   }
 
-  .bill-sum-price {
+  .bill-delivery_cost {
     width: 100%;
     height: 40px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     margin-right: 10px;
     border-top: 2px solid #eeeeee;

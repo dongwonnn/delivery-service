@@ -37,7 +37,7 @@ const Details = ({ details, loadingDetails, storeId }) => {
       )}
       {!loadingDetails && details && (
         <div className="detail-right">
-          <Bill />
+          <Bill deliveryCost={details.delivery_charge} />
         </div>
       )}
     </div>

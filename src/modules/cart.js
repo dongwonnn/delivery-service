@@ -2,7 +2,7 @@
 const ADD_CART = 'cart/ADD_CART';
 
 // 액션 생성 함수
-let id = 0;
+let id = 1;
 export const addCart = (menuName, optionMenus, totalPrice) => ({
   type: ADD_CART,
   bill: {

@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import './Bill.scss';
-import { CgCloseR } from 'react-icons/cg';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 
-const Bill = () => {
+const transStrToInt = (strPrice) => Number(strPrice.replace(',', ''));
+
+const Bill = ({ deliveryCost }) => {
   const cartData = useSelector((state) => state.cart.bills);
+  const [sumPirce, setSumPrice] = useState(0);
 
-  console.log(cartData);
+  useEffect(() => {
+    const payment = cartData.reduce((acc, cur) => {
+      return acc + cur.totalPrice;
+    }, 0);
+
+    setSumPrice(payment);
+  }, [cartData]);
 
   return (
     <div className="bill">
@@ -17,12 +26,15 @@ const Bill = () => {
         {cartData.length > 0 ? (
           cartData.map((data) => (
             <div className="bill-content-data" key={data.id}>
-              <p>
-                <strong>{data.menuName}</strong> : {data.optionMenus}
-              </p>
-              <p>
-                <CgCloseR /> {data.totalPrice}원
-              </p>
+              <div className="bill-content-data-header">
+                <p>
+                  {`${data.id}  `} <strong>{data.menuName}</strong>
+                </p>
+                <p>
+                  {data.totalPrice}원 <AiOutlineCloseCircle />
+                </p>
+              </div>
+              <p className="bill-content-data-options">{data.optionMenus}</p>
             </div>
           ))
         ) : (
@@ -31,8 +43,12 @@ const Bill = () => {
           </div>
         )}
       </div>
-      <div className="bill-sum-price">합계 : 5000</div>
-      <button>주문하기</button>
+      <div className="bill-delivery_cost">배달비 : {deliveryCost}</div>
+      {cartData.length > 0 ? (
+        <button>{sumPirce + transStrToInt(deliveryCost)}원 결제하기</button>
+      ) : (
+        <button>결제 하기</button>
+      )}
     </div>
   );
 };
