@@ -16,4 +16,15 @@ $grey: #eeeeee;
       font-size: 0.9rem;
     }
   }
+
+  .select-menu-options {
+    .select-menu-option {
+      display: flex;
+      padding: 10px;
+      justify-content: space-between;
+      input {
+        margin-right: 5px;
+      }
+    }
+  }
 }

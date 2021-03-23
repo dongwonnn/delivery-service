@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMenus } from '../modules/data';
 import './DetailMenuModal.scss';
@@ -14,6 +14,7 @@ const DetailMenuModal = ({ menuId }) => {
     ? transStrToInt(detailMenus.price)
     : undefined;
 
+  const formRef = useRef();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,8 +43,15 @@ const DetailMenuModal = ({ menuId }) => {
     setTotalPrice(totalPrice);
   };
 
-  const onsubmit = (e) => {
-    console.log(e);
+  const onSubmitBtn = () => {
+    const formData = Array.from(new FormData(formRef.current));
+    for (var key of formData.keys()) {
+      console.log(key);
+    }
+
+    for (var value of formData.values()) {
+      console.log(value);
+    }
   };
 
   if (detailMenus === null) {
@@ -78,16 +86,18 @@ const DetailMenuModal = ({ menuId }) => {
 
       {detailMenus.option_groups.length !== 0 && (
         <div>
-          {detailMenus.option_groups.map((group) => (
-            <SelectOptions
-              group={group}
-              setTotalPrice={setTotalPrice}
-              key={group.name}
-            />
-          ))}
+          <form ref={formRef}>
+            {detailMenus.option_groups.map((group) => (
+              <SelectOptions
+                group={group}
+                setTotalPrice={setTotalPrice}
+                key={group.name}
+              />
+            ))}
+          </form>
+          <button onClick={() => onSubmitBtn()}>제출</button>
         </div>
       )}
-      <button onClick={(e) => onsubmit(e)}>제출</button>
     </div>
   );
 };

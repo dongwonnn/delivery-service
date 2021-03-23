@@ -1,5 +1,4 @@
-import React from 'react';
-import MenuOptions from './MenuOptions';
+import React, { useEffect, useRef } from 'react';
 import './SelectOptions.scss';
 
 const SelectOptions = ({ group, setTotalPrice }) => {
@@ -9,17 +8,34 @@ const SelectOptions = ({ group, setTotalPrice }) => {
   return (
     <div className="select-options">
       <div className="select-options-cat">
-        <p>
-          {name} {`(${min}~${max})`}
-        </p>
+        <p>{`${name} (${min}~${max})`}</p>
         <p>{isRequied}</p>
       </div>
-      <div className="select-menu-option">
+      <div className="select-menu-options">
         {group.options.map((option) => (
-          <MenuOptions option={option} key={option.id} min={min} max={max} />
+          <div className="select-menu-option" key={option.id}>
+            <div>
+              <input
+                type="checkbox"
+                id={option.id}
+                name={name}
+                value={option.name}
+              />
+              <label htmlFor={option.id}>{option.name}</label>
+            </div>
+            <p>+ {option.price}</p>
+          </div>
         ))}
       </div>
     </div>
+    // <MenuOptions
+    //   option={option}
+    //   key={option.id}
+    //   name={name}
+    //   min={min}
+    //   max={max}
+    //   formData={formData}
+    // />
   );
 };
 
