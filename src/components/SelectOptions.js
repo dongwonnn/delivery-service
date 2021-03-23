@@ -1,9 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import './SelectOptions.scss';
 
-const SelectOptions = ({ group, setTotalPrice }) => {
+const SelectOptions = ({
+  totalPrice,
+  group,
+  setTotalPrice,
+  count,
+  setDefaultPrice,
+  defaultPrice,
+}) => {
   const { name, required, min, max } = group;
   const isRequied = required ? '필수 선택' : '';
+  const toggle = new Array(group.options.length).fill(false);
+
+  console.log(toggle);
 
   return (
     <div className="select-options">
@@ -28,14 +38,6 @@ const SelectOptions = ({ group, setTotalPrice }) => {
         ))}
       </div>
     </div>
-    // <MenuOptions
-    //   option={option}
-    //   key={option.id}
-    //   name={name}
-    //   min={min}
-    //   max={max}
-    //   formData={formData}
-    // />
   );
 };
 

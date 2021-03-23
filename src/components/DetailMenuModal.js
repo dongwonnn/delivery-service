@@ -4,62 +4,52 @@ import { getMenus } from '../modules/data';
 import './DetailMenuModal.scss';
 import SelectOptions from './SelectOptions';
 
-const transStrToInt = (strPrice) => strPrice.replace(',', '');
+const transStrToInt = (strPrice) => Number(strPrice.replace(',', ''));
 
 const DetailMenuModal = ({ menuId }) => {
   const detailMenus = useSelector((state) => state.data.menus);
-  const [count, setCount] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(undefined);
-  const defaultPrice = detailMenus
-    ? transStrToInt(detailMenus.price)
-    : undefined;
-
-  const formRef = useRef();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    setTotalPrice(defaultPrice);
-  }, [detailMenus, defaultPrice]);
-
   useEffect(() => {
     dispatch(getMenus(menuId));
   }, [menuId, dispatch]);
 
+  const [menuCnt, setMenuCnt] = useState(1);
+
+  const [defaultPrice, setDefaultPrice] = useState(undefined);
+  const [totalPrice, setTotalPrice] = useState(undefined);
+  useEffect(() => {
+    const tempPrice = detailMenus ? transStrToInt(detailMenus.price) : 0;
+    setDefaultPrice(tempPrice);
+    setTotalPrice(tempPrice);
+  }, [detailMenus]);
+
   const onMinusBtn = () => {
-    if (count > 1) {
-      const nextCount = count - 1;
-      const totalPrice = nextCount * defaultPrice;
-      setCount(nextCount);
-      setTotalPrice(totalPrice);
+    if (menuCnt > 1) {
+      const nextMenuCnt = menuCnt - 1;
+      setMenuCnt(nextMenuCnt);
     } else {
-      alert('1개 이상을 선택해주세요.');
+      alert('1개 이상 선택해주세요.');
     }
   };
+
   const onPlusBtn = () => {
-    const nextCount = count + 1;
-    const totalPrice = nextCount * defaultPrice;
-
-    setCount(nextCount);
-    setTotalPrice(totalPrice);
+    const nextMenuCnt = menuCnt + 1;
+    setMenuCnt(nextMenuCnt);
   };
 
-  const onSubmitBtn = () => {
-    const formData = Array.from(new FormData(formRef.current));
-    for (var key of formData.keys()) {
-      console.log(key);
-    }
+  useEffect(() => {
+    const nextTotalPrice = defaultPrice * menuCnt;
+    setTotalPrice(nextTotalPrice);
+  }, [menuCnt, defaultPrice]);
 
-    for (var value of formData.values()) {
-      console.log(value);
-    }
+  const onInputBtn = (menuPrice) => {
+    const nextDefaultPrice = defaultPrice + menuPrice;
+    setDefaultPrice(nextDefaultPrice);
   };
 
   if (detailMenus === null) {
     return <div>로딩 중</div>;
   }
-
-  if (detailMenus.option_groups.length > 0)
-    detailMenus.option_groups.sort((a, b) => b.required - a.required);
 
   return (
     <div className="detail-menu-modal">
@@ -79,25 +69,34 @@ const DetailMenuModal = ({ menuId }) => {
         <p>수량</p>
         <div className="detail-modal-count-btn">
           <button onClick={() => onMinusBtn()}>-</button>
-          <p>{count}</p>
+          <p>{menuCnt}</p>
           <button onClick={() => onPlusBtn()}>+</button>
         </div>
       </div>
-
-      {detailMenus.option_groups.length !== 0 && (
-        <div>
-          <form ref={formRef}>
-            {detailMenus.option_groups.map((group) => (
-              <SelectOptions
-                group={group}
-                setTotalPrice={setTotalPrice}
-                key={group.name}
-              />
-            ))}
-          </form>
-          <button onClick={() => onSubmitBtn()}>제출</button>
-        </div>
-      )}
+      <div className="detail-modal-select-menus">
+        <form>
+          {detailMenus.option_groups.map((group) => (
+            <div className="menus-group" key={group.name}>
+              <div className="menus-group-name">{group.name}</div>
+              {group.options.map((option) => (
+                <div className="menus-group-menu" key={option.id}>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id={option.id}
+                      name={group.name}
+                      value={option.name}
+                      onClick={() => onInputBtn(transStrToInt(option.price))}
+                    />
+                    <label htmlFor={option.id}>{option.name}</label>
+                  </div>
+                  <p>+ {option.price}</p>
+                </div>
+              ))}
+            </div>
+          ))}
+        </form>
+      </div>
     </div>
   );
 };

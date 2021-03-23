@@ -1,4 +1,5 @@
-$grey: #a4adb8;
+$grey: #939daa;
+$orange: #da6629;
 
 .detail-menu-modal {
   p {
@@ -65,6 +66,23 @@ $grey: #a4adb8;
       background-color: white;
       border-radius: 100%;
       border: 0.5px solid #939daa;
+    }
+  }
+
+  .detail-modal-select-menus {
+    .menus-group {
+      .menus-group-name {
+        background-color: $grey;
+        padding: 10px;
+      }
+      .menus-group-menu {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        input {
+          margin-right: 5px;
+        }
+      }
     }
   }
 }
