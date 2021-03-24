@@ -7,7 +7,7 @@ $blue: #4eacf8;
     font-size: 1.1rem;
   }
   background-color: white;
-  width: 60%;
+  width: 40%;
   min-width: 300px;
   max-width: 600px;
   height: 80%;
@@ -17,8 +17,8 @@ $blue: #4eacf8;
   position: fixed;
   left: 50%;
   top: 50%;
+  padding: 5px;
   transform: translate(-50%, -50%);
-  padding: 20px;
   z-index: 1011;
 
   .detail-menu-modal-img {
@@ -27,11 +27,14 @@ $blue: #4eacf8;
     padding-bottom: 10px;
   }
 
-  .detail-modal-info {
-    border-bottom: 1px solid $grey;
-    padding: 10px 0;
-    p {
-      color: #a4adb8;
+  .detail-modal-content {
+    padding: 30px;
+    .detail-modal-info {
+      border-bottom: 1px solid $grey;
+      padding: 10px 0;
+      p {
+        color: #a4adb8;
+      }
     }
   }
 
@@ -98,7 +101,6 @@ $blue: #4eacf8;
   }
 
   .detail-model-submit {
-    position: sticky;
     button {
       background-color: $blue;
       width: 100%;

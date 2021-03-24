@@ -20,7 +20,7 @@ const Bill = ({ deliveryCost }) => {
   return (
     <div className="bill">
       <div className="bill-title">
-        <p>주문 표</p>
+        <p>주문표</p>
       </div>
       <div className="bill-content">
         {cartData.length > 0 ? (

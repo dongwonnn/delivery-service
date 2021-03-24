@@ -44,15 +44,6 @@ const DetailMenuModal = ({ menuId, setIsVisible }) => {
 
   const onSubmitBtn = () => {
     const formData = Array.from(new FormData(formRef.current));
-
-    // for (var key of formData.keys()) {
-    //   console.log(key);
-    // }
-
-    // for (var value of formData.values()) {
-    //   console.log(value);
-    // }
-
     setIsVisible(false);
 
     const optionMenus = formData.map((data) => data[0]).join(' , ');
@@ -86,49 +77,52 @@ const DetailMenuModal = ({ menuId, setIsVisible }) => {
       <div className="detail-menu-modal-img">
         <img src={detailMenus.image} alt="상세 메뉴 이미지"></img>
       </div>
-      <div className="detail-modal-info">
-        <h2>{detailMenus.name}</h2>
-        <p>{detailMenus.description}</p>
-      </div>
-      <div className="detail-modal-price">
-        <p>가격</p>
-        <p>{totalPrice}원</p>
-      </div>
-      <div className="detail-modal-count">
-        <p>수량</p>
-        <div className="detail-modal-count-btn">
-          <button onClick={() => onMinusBtn()}>-</button>
-          <p>{menuCnt}</p>
-          <button onClick={() => onPlusBtn()}>+</button>
+      <div className="detail-modal-content">
+        <div className="detail-modal-info">
+          <h2>{detailMenus.name}</h2>
+          <p>{detailMenus.description}</p>
+        </div>
+        <div className="detail-modal-price">
+          <p>가격</p>
+          <p>{totalPrice}원</p>
+        </div>
+        <div className="detail-modal-count">
+          <p>수량</p>
+          <div className="detail-modal-count-btn">
+            <button onClick={() => onMinusBtn()}>-</button>
+            <p>{menuCnt}</p>
+            <button onClick={() => onPlusBtn()}>+</button>
+          </div>
+        </div>
+        <div className="detail-modal-select-menus">
+          <form ref={formRef}>
+            {detailMenus.option_groups.map((group) => (
+              <div className="menus-group" key={group.name}>
+                <div className="menus-group-name">
+                  <p>{`${group.name} (${group.min} ~ ${group.max})`}</p>
+                  <p>{group.required ? '필수 선택' : ' '}</p>
+                </div>
+                {group.options.map((option) => (
+                  <div className="menus-group-menu" key={option.id}>
+                    <div>
+                      <input
+                        type="checkbox"
+                        id={option.id}
+                        name={option.name}
+                        value={transStrToInt(option.price)}
+                        onClick={() => onInputBtn(group.min, group.required)}
+                      />
+                      <label htmlFor={option.id}>{option.name}</label>
+                    </div>
+                    <p>+ {option.price}원</p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </form>
         </div>
       </div>
-      <div className="detail-modal-select-menus">
-        <form ref={formRef}>
-          {detailMenus.option_groups.map((group) => (
-            <div className="menus-group" key={group.name}>
-              <div className="menus-group-name">
-                <p>{`${group.name} (${group.min} ~ ${group.max})`}</p>
-                <p>{group.required ? '필수 선택' : ' '}</p>
-              </div>
-              {group.options.map((option) => (
-                <div className="menus-group-menu" key={option.id}>
-                  <div>
-                    <input
-                      type="checkbox"
-                      id={option.id}
-                      name={option.name}
-                      value={transStrToInt(option.price)}
-                      onClick={() => onInputBtn(group.min, group.required)}
-                    />
-                    <label htmlFor={option.id}>{option.name}</label>
-                  </div>
-                  <p>+ {option.price}원</p>
-                </div>
-              ))}
-            </div>
-          ))}
-        </form>
-      </div>
+
       <div className="detail-model-submit">
         <button onClick={() => onSubmitBtn()}>주문표에 추가</button>
       </div>
