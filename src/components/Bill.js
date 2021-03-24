@@ -50,13 +50,13 @@ const Bill = () => {
       </div>
       <div className="bill-delivery_cost">배달비 : {deliveryCost}</div>
       {cartData.length > 0 ? (
-        <button>
-          <Link to={`/detail/${storeId}/payment`}>
-            {sumPirce + transStrToInt(deliveryCost)}원 결제하기
-          </Link>
-        </button>
+        <Link to={`/detail/${storeId}/payment`}>
+          <button>{sumPirce + transStrToInt(deliveryCost)}원 결제하기</button>
+        </Link>
       ) : (
-        <button>결제 하기</button>
+        <button onClick={() => alert('메뉴를 추가해 주세요.')}>
+          결제 하기
+        </button>
       )}
     </div>
   );

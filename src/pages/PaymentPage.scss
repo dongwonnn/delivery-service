@@ -1,6 +1,7 @@
 $blue: #4eacf8;
 $grey: #f6f6f6;
 $orange: #ea744a;
+$black: #333333;
 
 .payment-page {
   max-width: 1024px;
@@ -11,37 +12,196 @@ $orange: #ea744a;
   column-gap: 20px;
 
   .payment-content {
-    border: 1px solid black;
+    min-width: 300px;
+    border: 1px solid #eeeeee;
+
+    .payment-content-header {
+      background-color: $black;
+      color: white;
+      padding: 10px;
+    }
+
+    .payment-content-adrress {
+      div {
+        padding: 10px;
+        div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          p {
+            font-size: 0.9rem;
+            font-weight: bold;
+            min-width: 100px;
+          }
+          input {
+            resize: none;
+            width: 75%;
+          }
+          input::placeholder {
+            color: grey;
+            font-size: 0.9rem;
+            padding: 5px;
+          }
+        }
+      }
+    }
+
+    .payment-content-message {
+      div {
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      textarea {
+        padding: 10px;
+        width: 90%;
+        resize: none;
+        border: 0.5px solid #eeeeee;
+      }
+      textarea::placeholder {
+        color: grey;
+      }
+      textarea:hover {
+        border: 0.5px solid $blue;
+      }
+    }
+
+    .payment-content-way {
+      p {
+        padding: 10px;
+        font-size: 0.9rem;
+        font-weight: bold;
+      }
+
+      .payment-way-btn {
+        padding: 0 10px 10px 10px;
+        display: flex;
+        justify-content: space-evenly;
+        div {
+          width: 48%;
+          height: 50px;
+          border: 1px solid grey;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          svg {
+            font-size: 1.5rem;
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+
+    .payment-content-coupon {
+      div {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        p {
+          font-size: 0.9rem;
+          font-weight: bold;
+          min-width: 100px;
+        }
+        input {
+          resize: none;
+          width: 60%;
+        }
+        input::placeholder {
+          color: grey;
+          font-size: 0.9rem;
+          padding: 5px;
+        }
+        button {
+          width: 15%;
+          border: 1px solid rgb(253, 61, 61);
+          color: rgb(253, 61, 61);
+        }
+      }
+    }
+
+    h4 {
+      background-color: $grey;
+      padding: 5px;
+    }
   }
 
   .payment-info {
-    border: 1px solid #eeeeee;
+    min-width: 300px;
 
-    p {
-      padding-left: 10px;
+    .payment-info-header {
+      padding: 10px;
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      width: 100%;
-      height: 40px;
-    }
-
-    .payment-info-header {
-      background-color: $grey;
+      background-color: $black;
+      color: white;
+      font-weight: bold;
     }
 
     .payment-info-store {
       border-bottom: 1px solid #eeeeee;
+      padding: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
     }
+
+    .bill-content-data {
+      padding: 20px;
+
+      .bill-content-data-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p:nth-child(2) {
+          display: flex;
+          align-items: center;
+          svg {
+            padding-left: 10px;
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      .bill-content-data-options {
+        font-size: 0.9rem;
+        padding-left: 5px;
+        color: rgb(105, 105, 105);
+      }
+    }
+
     .payment-info-delivery_cost {
+      border-top: 1px solid #eeeeee;
       border-bottom: 1px solid #eeeeee;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+    .payment-info-total_price {
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
     }
 
     button {
       width: 100%;
       height: 50px;
       background-color: $blue;
-      color: white;
+      a {
+        color: white;
+      }
     }
   }
 }
