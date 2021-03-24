@@ -1,13 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CatNav from '../components/CatNav';
 import DetailMenus from '../components/DetailMenus';
 import Bill from './Bill';
 import DeliveryInfo from './DeliveryInfo';
 import './Details.scss';
 import StoreInfo from './StoreInfo';
+import { getDetails } from '../modules/data';
 
-const Details = ({ details, loadingDetails, storeId }) => {
+const Details = ({ loadingDetails, storeId }) => {
   const contentRef = useRef([]);
+
+  const details = useSelector((state) => state.data.details);
+  const detailsDisaptch = useDispatch();
+
+  useEffect(() => {
+    detailsDisaptch(getDetails(storeId));
+  }, [detailsDisaptch, storeId]);
 
   const moveToPage = (index) => () => {
     contentRef.current[index].scrollIntoView({
@@ -37,7 +46,7 @@ const Details = ({ details, loadingDetails, storeId }) => {
       )}
       {!loadingDetails && details && (
         <div className="detail-right">
-          <Bill deliveryCost={details.delivery_charge} />
+          <Bill />
         </div>
       )}
     </div>

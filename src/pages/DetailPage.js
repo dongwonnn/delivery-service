@@ -1,10 +1,10 @@
 import React from 'react';
-import DetailsContainer from '../containers/DetailsContainer';
+import Details from '../components/Details';
 
 const DetailPage = ({ match }) => {
   const storeId = match.params.storeId;
   // Details.js
-  return <DetailsContainer storeId={storeId} />;
+  return <Details storeId={storeId} />;
 };
 
 export default DetailPage;
