@@ -1,5 +1,7 @@
 // 액션 타입 정의
 const ADD_CART = 'cart/ADD_CART';
+const RESET_CART = 'cart/RESET_CART';
+const REMOVE_CART = 'cart/REMOVE_CART';
 
 // 액션 생성 함수
 let id = 1;
@@ -11,6 +13,14 @@ export const addCart = (menuName, optionMenus, totalPrice) => ({
     optionMenus,
     totalPrice,
   },
+});
+
+export const removeCart = () => ({
+  type: REMOVE_CART,
+});
+
+export const restCart = () => ({
+  type: RESET_CART,
 });
 
 // 초기값 설정
@@ -26,6 +36,10 @@ function cart(state = initialStete, action) {
         ...state,
         bills: state.bills.concat(action.bill),
       };
+    case REMOVE_CART:
+      return {};
+    case RESET_CART:
+      return {};
     default:
       return state;
   }

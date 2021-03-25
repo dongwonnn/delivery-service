@@ -23,7 +23,7 @@ const PaymentPage = () => {
     setSumPrice(payment);
   }, [cartData]);
 
-  const onSendCartData = async () => {
+  const onSendCartData = () => {
     // const sendData = {
     //   storeName,
     //   cartData,
@@ -31,6 +31,8 @@ const PaymentPage = () => {
     // };
     // const response = await axios.post();
   };
+
+  const onResetCart = () => {};
 
   return (
     <div>
@@ -112,7 +114,7 @@ const PaymentPage = () => {
             <p>총 결제 금액</p>
             <p>{sumPirce + transStrToInt(deliveryCost)}</p>
           </div>
-          <button onClick={() => onSendCartData()}>
+          <button onClick="">
             <Link to="/">결제하기</Link>
           </button>
         </div>
