@@ -37,6 +37,7 @@
 - [ ] redux saga로 데이터 가져올 때 이전에 있던 데이터 안보이게 처리
 - [ ] scroll spy 재구현
 - [ ] infinity scorll 구현
-- [ ] 새로고침시 데이터 유지
+- [x] 새로고침시 데이터 유지 : redux-persist 사용
 - [ ] Redux Loading 구현
 - [ ] useDispatch 사용 시 useCallback or useEffect 사용?
+- [ ] CORS, PROXY 문제

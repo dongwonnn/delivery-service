@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './AllStores.scss';
 import { AiFillStar } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStores } from '../reducers/data';
+const AllStores = () => {
+  const stores = useSelector((state) => state.data.stores);
+  const loadingStores = useSelector((state) => state.data.GET_STORES);
 
-const AllStores = ({ stores, loadingStores }) => {
+  const storesDispatch = useDispatch();
+  useEffect(() => {
+    storesDispatch(getStores());
+  }, [getStores, storesDispatch]);
+
   return (
     <div className="allStores">
       {loadingStores && '로딩 중'}

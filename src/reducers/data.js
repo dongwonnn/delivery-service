@@ -112,6 +112,12 @@ export function* dataSaga() {
 
 // 초기값 설정
 const initialStete = {
+  loading: {
+    GET_POST: false,
+    GET_USERS: false,
+    GET_DETAILS: false,
+    GET_MENUS: false,
+  },
   cat: null,
   stores: null,
   details: null,

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMenus } from '../modules/data';
-import { addCart } from '../modules/cart';
+import { addCart } from '../reducers/cart';
+import { getMenus } from '../reducers/data';
 
 import './DetailMenuModal.scss';
 

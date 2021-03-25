@@ -1,15 +1,15 @@
 import React from 'react';
+import AllCat from '../components/AllCat';
+import AllStores from '../components/AllStores';
 import Banner from '../components/Banner';
 import Sort from '../components/Sort';
-import AllCatContainer from '../containers/AllCatContainer';
-import AllStoresContainer from '../containers/AllStoresContainer';
 import './MainPage.scss';
 
 const MainPage = () => {
   return (
     <div className="mainpage">
       <Banner />
-      <AllCatContainer />
+      <AllCat />
       <div className="mainpage-title">
         <div className="title">
           <h2>전체보기</h2>
@@ -17,7 +17,7 @@ const MainPage = () => {
         </div>
         <Sort />
       </div>
-      <AllStoresContainer />
+      <AllStores />
     </div>
   );
 };

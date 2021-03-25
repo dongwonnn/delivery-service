@@ -6,12 +6,13 @@ import Bill from './Bill';
 import DeliveryInfo from './DeliveryInfo';
 import './Details.scss';
 import StoreInfo from './StoreInfo';
-import { getDetails } from '../modules/data';
+import { getDetails } from '../reducers/data';
 
-const Details = ({ loadingDetails, storeId }) => {
+const Details = ({ storeId }) => {
   const contentRef = useRef([]);
 
   const details = useSelector((state) => state.data.details);
+  const loadingDetails = useSelector((state) => state.data.GET_DETAILS);
   const detailsDisaptch = useDispatch();
 
   useEffect(() => {

@@ -4,7 +4,6 @@ import rootReducer, { rootSaga } from './index';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 
 // const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();

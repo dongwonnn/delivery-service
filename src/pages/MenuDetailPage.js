@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMenus } from '../modules/data';
+import { getMenus } from '../reducers/data';
 import './MenuDetailPage.scss';
 
 const MenuDetailPage = ({ match }) => {

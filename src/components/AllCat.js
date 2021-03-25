@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getCat } from '../reducers/data';
 import './AllCat.scss';
 
-const AllCat = ({ cat, loadingCat }) => {
+const AllCat = () => {
+  const cat = useSelector((state) => state.data.cat);
+  const loadingCat = useSelector((state) => state.data.GET_CAT);
+
+  const catDispatch = useDispatch();
+  useEffect(() => {
+    catDispatch(getCat());
+  }, [getCat]);
+
   return (
     <div className="allCat">
       {loadingCat && '로딩 중'}
