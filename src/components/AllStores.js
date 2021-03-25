@@ -39,4 +39,4 @@ const AllStores = () => {
   );
 };
 
-export default AllStores;
+export default React.memo(AllStores);

@@ -130,4 +130,4 @@ const DetailMenuModal = ({ menuId, setIsVisible }) => {
   );
 };
 
-export default DetailMenuModal;
+export default React.memo(DetailMenuModal);

@@ -62,4 +62,4 @@ const Bill = () => {
   );
 };
 
-export default Bill;
+export default React.memo(Bill);

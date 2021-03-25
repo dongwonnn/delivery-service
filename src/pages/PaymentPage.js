@@ -123,4 +123,4 @@ const PaymentPage = () => {
   );
 };
 
-export default PaymentPage;
+export default React.memo(PaymentPage);

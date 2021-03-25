@@ -35,4 +35,4 @@ const MenuDetailPage = ({ match }) => {
   );
 };
 
-export default MenuDetailPage;
+export default React.memo(MenuDetailPage);

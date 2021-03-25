@@ -32,4 +32,4 @@ const AllCat = () => {
   );
 };
 
-export default AllCat;
+export default React.memo(AllCat);

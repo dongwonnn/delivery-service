@@ -26,7 +26,8 @@
 
 - [ ] x버튼 -> bill 제거 reducer, 결제 완료 시 bills 제거 reducer 구현
 - [x] 새로고침시 store 데이터 유지 : redux-persist 사용
-- [ ] Redux Saga Container 대신 Hooks 대체 (useSelector, useDispatch 이용)
+- [x] Redux Saga Container 대신 Hooks 대체 (useSelector, useDispatch 이용)
+- [x] useSelector 사용 시 props가 바뀌지 않았다면 리렌더링을 방지하는 React.memo 설정
 
 #### [발생 이슈]
 
@@ -39,5 +40,5 @@
 - [ ] infinity scorll 구현
 - [x] 새로고침시 데이터 유지 : redux-persist 사용
 - [ ] Redux Loading 구현
-- [ ] useDispatch 사용 시 useCallback or useEffect 사용?
+- [x] useDispatch 사용 시 useCallback or useEffect 사용? : dispatch가 이벤트와 같이 함수로 사용된다면 useCallback 사용. 비동기 같이 렌더링 될때마다 실행된다면 useEffect 사용
 - [ ] CORS, PROXY 문제

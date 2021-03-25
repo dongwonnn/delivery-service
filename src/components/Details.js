@@ -54,4 +54,4 @@ const Details = ({ storeId }) => {
   );
 };
 
-export default Details;
+export default React.memo(Details);
