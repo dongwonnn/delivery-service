@@ -3,15 +3,19 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer, { rootSaga } from './index';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 // const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
+export const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 
 sagaMiddleware.run(rootSaga);
 
-export default store;
+export const persistor = persistStore(store);
+
+export default { store, persistor };

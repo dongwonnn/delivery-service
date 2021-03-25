@@ -1,9 +1,15 @@
 import { combineReducers } from 'redux';
 import { all } from 'redux-saga/effects';
-import { persistStore, persistReducer } from 'redux-persist';
 import data, { dataSaga } from './data';
 import cart from './cart';
 import loading from './loading';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+const persistConfig = {
+  key: 'root',
+  storage: storage,
+};
 
 const rootReducer = combineReducers({
   data,
@@ -15,4 +21,4 @@ export function* rootSaga() {
   yield all([dataSaga()]);
 }
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);

@@ -25,7 +25,7 @@
 #### [0325]
 
 - [ ] x버튼 -> bill 제거 reducer, 결제 완료 시 bills 제거 reducer 구현
-- [ ] 새로고침시 store 데이터 유지
+- [x] 새로고침시 store 데이터 유지 : redux-persist 사용
 - [ ] Redux Saga Container 대신 Hooks 대체 (useSelector, useDispatch 이용)
 
 #### [발생 이슈]
