@@ -11,7 +11,7 @@ const AllCat = () => {
   const catDispatch = useDispatch();
   useEffect(() => {
     catDispatch(getCat());
-  }, [getCat]);
+  }, [catDispatch]);
 
   return (
     <div className="allCat">

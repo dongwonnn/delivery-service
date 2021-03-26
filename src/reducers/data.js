@@ -147,6 +147,10 @@ function data(state = initialStete, action) {
         ...state,
         menus: action.payload,
       };
+    case GET_CAT_FAILURE:
+    case GET_STORES_FAILURE:
+    case GET_DETAILS_FAILURE:
+    case GET_MENUS_FAILURE:
     default:
       return state;
   }

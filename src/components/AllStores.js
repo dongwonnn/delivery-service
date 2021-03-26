@@ -11,7 +11,7 @@ const AllStores = () => {
   const storesDispatch = useDispatch();
   useEffect(() => {
     storesDispatch(getStores());
-  }, [getStores, storesDispatch]);
+  }, [storesDispatch]);
 
   return (
     <div className="allStores">

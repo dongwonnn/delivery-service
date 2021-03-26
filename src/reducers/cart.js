@@ -37,9 +37,7 @@ function cart(state = initialStete, action) {
         bills: state.bills.concat(action.bill),
       };
     case REMOVE_CART:
-      return {};
     case RESET_CART:
-      return {};
     default:
       return state;
   }

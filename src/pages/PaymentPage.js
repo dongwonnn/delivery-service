@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './PaymentPage.scss';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { ImCreditCard } from 'react-icons/im';
 import { BiWon } from 'react-icons/bi';
+import { restCart } from '../reducers/cart';
 const transStrToInt = (strPrice) => Number(strPrice.replace(',', ''));
 
 const PaymentPage = () => {
   const storeName = useSelector((state) => state.data.details.title);
   const cartData = useSelector((state) => state.cart.bills);
+  const cartDispatch = useDispatch();
+
   const deliveryCost = useSelector(
     (state) => state.data.details.delivery_charge,
   );
@@ -32,7 +35,8 @@ const PaymentPage = () => {
     // const response = await axios.post();
   };
 
-  const onResetCart = () => {};
+  // 결제 버튼 누르면, cart 정보 초기화, mainPage로 이동
+  const onPayBtn = useCallback(() => cartDispatch(restCart()), [cartDispatch]);
 
   return (
     <div>
@@ -114,7 +118,7 @@ const PaymentPage = () => {
             <p>총 결제 금액</p>
             <p>{sumPirce + transStrToInt(deliveryCost)}</p>
           </div>
-          <button onClick="">
+          <button onClick={() => onPayBtn()}>
             <Link to="/">결제하기</Link>
           </button>
         </div>
