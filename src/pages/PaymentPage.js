@@ -5,7 +5,7 @@ import './PaymentPage.scss';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { ImCreditCard } from 'react-icons/im';
 import { BiWon } from 'react-icons/bi';
-import { restCart } from '../reducers/cart';
+import { resetCart } from '../reducers/cart';
 const transStrToInt = (strPrice) => Number(strPrice.replace(',', ''));
 
 const PaymentPage = () => {
@@ -36,7 +36,7 @@ const PaymentPage = () => {
   };
 
   // 결제 버튼 누르면, cart 정보 초기화, mainPage로 이동
-  const onPayBtn = useCallback(() => cartDispatch(restCart()), [cartDispatch]);
+  const onPayBtn = useCallback(() => cartDispatch(resetCart()), [cartDispatch]);
 
   return (
     <div>

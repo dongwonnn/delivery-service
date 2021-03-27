@@ -50,3 +50,4 @@
 - [ ] 배열 초기화 : splice
 - [ ] useSelect 해체문법으로 한번에 작성하기
 - [ ] 초기값 설정 안되는 오류
+- [ ] Redux Persist -> cart는 store에 안들어가지는 이유

@@ -47,6 +47,7 @@ function* getCatSaga() {
   }
   yield put(finishLoding(GET_CAT));
 }
+
 function* getStoresSaga() {
   yield put(startLoading(GET_STORES));
   try {
@@ -65,6 +66,7 @@ function* getStoresSaga() {
   }
   yield put(finishLoding(GET_STORES));
 }
+
 function* getDetailsSaga(action) {
   yield put(startLoading(GET_DETAILS));
   try {
@@ -112,12 +114,6 @@ export function* dataSaga() {
 
 // 초기값 설정
 const initialStete = {
-  loading: {
-    GET_POST: false,
-    GET_USERS: false,
-    GET_DETAILS: false,
-    GET_MENUS: false,
-  },
   cat: null,
   stores: null,
   details: null,
