@@ -33,9 +33,10 @@ function cart(state = initialStete, action) {
         bills: state.bills.concat(action.bill),
       };
     case RESET_CART:
-      console.log(action);
-      console.log(state);
-      return {};
+      return {
+        ...state,
+        bills: [],
+      };
     default:
       return state;
   }

@@ -26,17 +26,10 @@ const PaymentPage = () => {
     setSumPrice(payment);
   }, [cartData]);
 
-  const onSendCartData = () => {
-    // const sendData = {
-    //   storeName,
-    //   cartData,
-    //   deliveryCost,
-    // };
-    // const response = await axios.post();
-  };
-
   // 결제 버튼 누르면, cart 정보 초기화, mainPage로 이동
-  const onPayBtn = useCallback(() => cartDispatch(resetCart()), [cartDispatch]);
+  const onPayBtn = () => {
+    cartDispatch(resetCart());
+  };
 
   return (
     <div>
@@ -128,3 +121,12 @@ const PaymentPage = () => {
 };
 
 export default React.memo(PaymentPage);
+
+// const onSendCartData = () => {
+//   const sendData = {
+//     storeName,
+//     cartData,
+//     deliveryCost,
+//   };
+//   const response = await axios.post();
+// };
