@@ -62,4 +62,5 @@
 
 - [ ] Token, JWT, OAuth -> 세션, 쿠키
 - [x] 특정 컴포넌트에 nav 적용 제외시키기
-- [ ] 객체 속성 접근자. 객체[key값] = value
+- [x] 객체 속성 접근자. 객체[key값] = value
+- [x] input value undefined 처리 : || ''

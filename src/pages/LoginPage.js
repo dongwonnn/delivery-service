@@ -45,6 +45,7 @@ const LoginPage = () => {
               placeholder="아이디(이메일)"
               onChange={onChange}
               // Reducer로 데이터가 변경됐을 때 input 작동
+              // undefined 에러 처리 || ''
               value={form.username || ''}
             />
             <input
