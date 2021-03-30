@@ -1,18 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import './PaymentPage.scss';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { ImCreditCard } from 'react-icons/im';
 import { BiWon } from 'react-icons/bi';
-import { resetCart } from '../reducers/cart';
+import { removeCart, resetCart } from '../reducers/cart';
 const transStrToInt = (strPrice) => Number(strPrice.replace(',', ''));
 
-const PaymentPage = () => {
+const PaymentPage = ({ history }) => {
   const storeName = useSelector((state) => state.data.details.title);
   const cartData = useSelector((state) => state.cart.bills);
   const cartDispatch = useDispatch();
-
   const deliveryCost = useSelector(
     (state) => state.data.details.delivery_charge,
   );
@@ -27,8 +25,15 @@ const PaymentPage = () => {
   }, [cartData]);
 
   // 결제 버튼 누르면, cart 정보 초기화, mainPage로 이동
-  const onPayBtn = () => {
-    cartDispatch(resetCart());
+  const onPayBtn = useCallback(() => {
+    cartDispatch(resetCart(0));
+    history.push('/');
+  }, [cartDispatch, history]);
+
+  const onRemoveBtn = (id, dataLen) => {
+    dataLen !== 1
+      ? cartDispatch(removeCart(id))
+      : alert('최소 한 가지 선택하세요');
   };
 
   return (
@@ -97,7 +102,10 @@ const PaymentPage = () => {
                   {`${data.id}  `} <strong>{data.menuName}</strong>
                 </p>
                 <p>
-                  {data.totalPrice}원 <AiOutlineCloseCircle />
+                  {data.totalPrice}원{' '}
+                  <AiOutlineCloseCircle
+                    onClick={() => onRemoveBtn(data.id, cartData.length)}
+                  />
                 </p>
               </div>
               <p className="bill-content-data-options">{data.optionMenus}</p>
@@ -111,9 +119,7 @@ const PaymentPage = () => {
             <p>총 결제 금액</p>
             <p>{sumPirce + transStrToInt(deliveryCost)}</p>
           </div>
-          <button onClick={() => onPayBtn()}>
-            <Link to="/">결제하기</Link>
-          </button>
+          <button onClick={() => onPayBtn()}>결제하기</button>
         </div>
       </div>
     </div>

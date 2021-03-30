@@ -26,11 +26,14 @@
 
 #### [0325]
 
-- [ ] x버튼 -> bill 제거 reducer, 결제 완료 시 bills 제거 reducer 구현
 - [x] 새로고침시 store 데이터 유지 : redux-persist 사용
 - [x] Redux Saga Container 대신 Hooks 대체 (useSelector, useDispatch 이용)
 - [x] useSelector 사용 시 props가 바뀌지 않았다면 리렌더링을 방지하는 React.memo 설정
 - [x] 페이지 이동 시 스크롤 항상 위 고정
+
+#### [0329]
+
+- [ ] x버튼 -> bill 제거 reducer, 결제 완료 시 bills 제거 reducer 구현
 
 #### [발생 이슈]
 
@@ -51,3 +54,4 @@
 - [ ] useSelect 해체문법으로 한번에 작성하기
 - [ ] 초기값 설정 안되는 오류
 - [ ] Redux Persist -> cart는 store에 안들어가지는 이유
+- [ ] cart 초기화 했을 때 id 처리

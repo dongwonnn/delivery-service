@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './Bill.scss';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { removeCart } from '../reducers/cart';
 
 const transStrToInt = (strPrice) => Number(strPrice.replace(',', ''));
 
@@ -12,6 +13,7 @@ const Bill = () => {
   );
   const storeId = useSelector((state) => state.data.details.id);
   const cartData = useSelector((state) => state.cart.bills);
+  const cartDispatch = useDispatch();
   const [sumPirce, setSumPrice] = useState(0);
 
   useEffect(() => {
@@ -21,6 +23,10 @@ const Bill = () => {
 
     setSumPrice(payment);
   }, [cartData]);
+
+  const onRemoveBtn = (id) => {
+    cartDispatch(removeCart(id));
+  };
 
   return (
     <div className="bill">
@@ -36,7 +42,8 @@ const Bill = () => {
                   {`${data.id}  `} <strong>{data.menuName}</strong>
                 </p>
                 <p>
-                  {data.totalPrice}원 <AiOutlineCloseCircle />
+                  {data.totalPrice}원{' '}
+                  <AiOutlineCloseCircle onClick={() => onRemoveBtn(data.id)} />
                 </p>
               </div>
               <p className="bill-content-data-options">{data.optionMenus}</p>
