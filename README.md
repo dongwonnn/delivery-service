@@ -33,11 +33,10 @@
 
 #### [0329]
 
-- [ ] x버튼 -> bill 제거 reducer, 결제 완료 시 bills 제거 reducer 구현
+- [x] x버튼 -> bill 제거 reducer, 결제 완료 시 bills 제거 reducer 구현
 
 #### [발생 이슈]
 
-- [ ] x 눌렀을 때 Redux 제거, 결제 완료 시 에도 Redux 제거 기능 구현
 - [ ] 장바구니에 담겨있을 때 다른 가게 장바구니 넣을 시 장바구니 초기화
 - [ ] jwt 이용한 로그인 구현 혹은 oAuth 사용
 - [ ] Radio box 데이터 검증 ( 필수 선택 카테고리 )
@@ -45,13 +44,14 @@
 - [ ] CORS, PROXY 문제
 - [ ] scroll spy 재구현
 - [ ] infinity scorll 구현
-- [x] 페이지 이동 시 스크롤 위치 맨 위로 - useLocation() Hooks 이용
-- [x] 새로고침시 데이터 유지 : redux-persist 사용
-- [x] Redux Loading 구현
-- [x] useDispatch 사용 시 useCallback or useEffect 사용? : dispatch가 이벤트와 같이 함수로 사용된다면 useCallback 사용. 비동기 같이 렌더링 될때마다 실행된다면 useEffect 사용
 - [ ] 클릭 이벤트 동시 처리 ? 리덕스 사가를 이용한 페이지 이동
 - [ ] 배열 초기화 : splice
 - [ ] useSelect 해체문법으로 한번에 작성하기
 - [ ] 초기값 설정 안되는 오류
 - [ ] Redux Persist -> cart는 store에 안들어가지는 이유
 - [ ] cart 초기화 했을 때 id 처리
+- [x] x 눌렀을 때 Redux 제거, 결제 완료 시 에도 Redux 제거 기능 구현
+- [x] 페이지 이동 시 스크롤 위치 맨 위로 - useLocation() Hooks 이용
+- [x] 새로고침시 데이터 유지 : redux-persist 사용
+- [x] Redux Loading 구현
+- [x] useDispatch 사용 시 useCallback or useEffect 사용? : dispatch가 이벤트와 같이 함수로 사용된다면 useCallback 사용. 비동기 같이 렌더링 될때마다 실행된다면 useEffect 사용

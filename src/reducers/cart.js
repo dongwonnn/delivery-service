@@ -40,11 +40,9 @@ function cart(state = initialStete, action) {
     case RESET_CART:
       return {
         ...state,
-        bills: [],
+        bills: state.bills.splice(0, state.bills.length),
       };
     case REMOVE_CART:
-      console.log(id);
-      console.log(state.bills);
       return {
         ...state,
         bills: state.bills.filter((bill) => bill.id !== action.id),
