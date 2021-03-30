@@ -1,0 +1,26 @@
+$grey: #f6f6f6;
+$orange: #ea744a;
+$blue: #4eacf8;
+
+.header {
+  padding: 10px 0;
+  max-width: 1068px;
+  margin: 0 auto;
+
+  text-align: center;
+
+  display: grid;
+  grid-template-columns: 2fr 8fr 1fr 1fr;
+  column-gap: 5px;
+
+  justify-content: center;
+  align-items: center;
+
+  button {
+    padding: 5px 0;
+
+    a {
+      color: #a9b5c7;
+    }
+  }
+}

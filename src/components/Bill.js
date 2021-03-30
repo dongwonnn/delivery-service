@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './Bill.scss';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { removeCart } from '../reducers/cart';
+import './Bill.scss';
 
 const transStrToInt = (strPrice) => Number(strPrice.replace(',', ''));
 

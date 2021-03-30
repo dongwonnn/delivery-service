@@ -1,0 +1,84 @@
+.registerPage {
+  background-color: white;
+  margin: 0 auto;
+  padding: 30px 35.016px;
+  max-width: 364px;
+
+  .reg-title {
+    text-align: center;
+
+    .reg-logo {
+      margin-top: 47.234px;
+      img {
+        width: 195px;
+        height: 46px;
+      }
+    }
+  }
+
+  .reg-main {
+    display: flex;
+    flex-direction: column;
+    p {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .reg-form {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 1;
+      input {
+        height: 20px;
+        padding: 16px 15px 12px 15px;
+        margin-bottom: 15px;
+        background-color: #ffffff;
+        border: 0.5px #cccccc solid;
+        font-size: 16px;
+        font-weight: 600;
+        color: #bdaaaa;
+      }
+    }
+    .reg-line {
+      border-bottom: 1px #cccccc solid;
+    }
+
+    .reg-agree-all {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .reg-agree-form {
+      display: flex;
+      flex-direction: column;
+      border: 1px #cccccc solid;
+      input {
+        margin-right: 4px;
+      }
+      li {
+        padding-bottom: 12px;
+        font-size: 20px;
+      }
+    }
+
+    .reg-submit {
+      width: 100%;
+      margin-top: 20px;
+      background-color: #0074e9;
+      border-bottom: 2px #004890 solid;
+      color: #ffffff;
+      height: 52px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  .reg-footer {
+    .reg-copy {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
