@@ -1,29 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { changeField, initializeForm } from '../reducers/auth';
 import './LoginPage.scss';
 
-const LoginPage = ({ login, history }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const LoginPage = () => {
+  const authDispatch = useDispatch();
+  const { form } = useSelector(({ auth }) => ({
+    form: auth.login,
+  }));
 
-  const onChangeEmail = (e) => {
-    setEmail(e.target.value);
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    authDispatch(
+      changeField({
+        form: 'login',
+        key: name,
+        value,
+      }),
+    );
   };
 
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
+  const onSubmit = (e) => {
+    e.preventDefault();
   };
 
-  const handleClick = () => {
-    try {
-      login({ email, password });
-      history.go(-1);
-    } catch (e) {
-      alert('다시 입력해주세요.');
-      setEmail('');
-      setPassword('');
-    }
-  };
+  useEffect(() => {
+    authDispatch(initializeForm('login'));
+  }, [authDispatch]);
 
   return (
     <div className="loginPage">
@@ -33,19 +37,24 @@ const LoginPage = ({ login, history }) => {
         </h1>
       </header>
       <main className="login-main">
-        <div className="login-content">
-          <input
-            value={email}
-            onChange={onChangeEmail}
-            type="text"
-            placeholder="아이디(이메일)"
-          />
-          <input
-            value={password}
-            onChange={onChangePassword}
-            type="password"
-            placeholder="비밀번호"
-          />
+        <form onSubmit={onSubmit}>
+          <div className="login-content">
+            <input
+              name="username"
+              type="text"
+              placeholder="아이디(이메일)"
+              onChange={onChange}
+              // Reducer로 데이터가 변경됐을 때 input 작동
+              value={form.username || ''}
+            />
+            <input
+              name="password"
+              type="password"
+              placeholder="비밀번호"
+              onChange={onChange}
+              value={form.password || ''}
+            />
+          </div>
           <div className="login-message">
             <div className="login-checkbox">
               <input type="checkbox" id="auto-login" />
@@ -54,18 +63,15 @@ const LoginPage = ({ login, history }) => {
             <p className="login-search">아이디(이메일)/비밀번호 찾기</p>
           </div>
           <div className="login-submit">
-            <button className="login-login" onClick={handleClick}>
-              로그인
-            </button>
-            <div className="login-line"></div>
-            <div className="login-register">
-              <Link to="/register">
-                <p>회원가입</p>
-              </Link>
-            </div>
+            <button className="login-login">로그인</button>
           </div>
-        </div>
+        </form>
       </main>
+      <footer className="login-register">
+        <Link to="/register">
+          <p>회원가입</p>
+        </Link>
+      </footer>
     </div>
   );
 };

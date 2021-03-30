@@ -61,4 +61,5 @@
 - [x] useDispatch 사용 시 useCallback or useEffect 사용? : dispatch가 이벤트와 같이 함수로 사용된다면 useCallback 사용. 비동기 같이 렌더링 될때마다 실행된다면 useEffect 사용
 
 - [ ] Token, JWT, OAuth -> 세션, 쿠키
-- [ ] 특정 컴포넌트에 nav 적용 제외시키기
+- [x] 특정 컴포넌트에 nav 적용 제외시키기
+- [ ] 객체 속성 접근자. 객체[key값] = value
