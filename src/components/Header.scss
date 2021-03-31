@@ -10,7 +10,7 @@ $blue: #4eacf8;
   text-align: center;
 
   display: grid;
-  grid-template-columns: 2fr 8fr 1fr 1fr;
+  grid-template-columns: 2fr 8fr 2fr 2fr;
   column-gap: 5px;
 
   justify-content: center;
@@ -21,6 +21,22 @@ $blue: #4eacf8;
 
     a {
       color: #a9b5c7;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    grid-template-columns: 1fr;
+
+    .header_logo {
+      display: none;
+    }
+    .header_seaerch {
+      text-align: center;
+    }
+    button {
+      display: none;
     }
   }
 }

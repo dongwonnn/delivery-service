@@ -26,7 +26,7 @@ const PaymentPage = ({ history }) => {
 
   // 결제 버튼 누르면, cart 정보 초기화, mainPage로 이동
   const onPayBtn = useCallback(() => {
-    cartDispatch(resetCart(0));
+    cartDispatch(resetCart());
     history.push('/');
   }, [cartDispatch, history]);
 
@@ -92,6 +92,7 @@ const PaymentPage = ({ history }) => {
             </div>
           </div>
         </div>
+
         <div className="payment-info">
           <p className="payment-info-header">주문 내역</p>
           <p className="payment-info-store">{storeName}</p>
@@ -119,7 +120,12 @@ const PaymentPage = ({ history }) => {
             <p>총 결제 금액</p>
             <p>{sumPirce + transStrToInt(deliveryCost)}</p>
           </div>
-          <button onClick={() => onPayBtn()}>결제하기</button>
+          <div className="payment-pay_button">
+            <button onClick={() => onPayBtn()}>
+              <p>총 {sumPirce + transStrToInt(deliveryCost)}원</p>
+              <p>결제하기</p>
+            </button>
+          </div>
         </div>
       </div>
     </div>

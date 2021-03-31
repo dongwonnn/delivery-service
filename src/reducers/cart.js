@@ -40,7 +40,8 @@ function cart(state = initialStete, action) {
     case RESET_CART:
       return {
         ...state,
-        bills: state.bills.splice(0, state.bills.length),
+        bills: [],
+        // bills: state.bills.splice(0),
       };
     case REMOVE_CART:
       return {

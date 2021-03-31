@@ -5,9 +5,9 @@ import { finishLoding, startLoading } from './loading';
 const CHANGE_FIELD = 'auth/CHANGE_FIELD';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
 
-const LOGIN = 'auth/LOGIN';
-const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
-const LOGIN_FAILURE = 'auth/LOGIN_FAILURE';
+// const LOGIN = 'auth/LOGIN';
+// const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
+// const LOGIN_FAILURE = 'auth/LOGIN_FAILURE';
 
 // const REGISTER = 'auth/REGISTER';
 // const REGISTER_SUCCESS = 'auth/REGISTER_SUCCESS';
@@ -24,36 +24,36 @@ export const initializeForm = () => ({
   type: INITIALIZE_FORM,
 });
 
-export const login = (username, password) => ({
-  type: LOGIN,
-  username,
-  password,
-});
+// export const login = (username, password) => ({
+//   type: LOGIN,
+//   username,
+//   password,
+// });
 
 // saga 생성
-function* loginSaga(action) {
-  yield put(startLoading(LOGIN));
-  try {
-    const response = yield call(authApi.login, action.payload);
+// function* loginSaga(action) {
+//   yield put(startLoading(LOGIN));
+//   try {
+//     const response = yield call(authApi.login, action.payload);
 
-    yield put({
-      type: LOGIN_SUCCESS,
-      payload: response.data,
-    });
-  } catch (e) {
-    yield put({
-      type: LOGIN_FAILURE,
-      payload: e,
-      error: true,
-    });
-  }
-  yield put(finishLoding(LOGIN));
-}
+//     yield put({
+//       type: LOGIN_SUCCESS,
+//       payload: response.data,
+//     });
+//   } catch (e) {
+//     yield put({
+//       type: LOGIN_FAILURE,
+//       payload: e,
+//       error: true,
+//     });
+//   }
+//   yield put(finishLoding(LOGIN));
+// }
 
 // SAGA 통합
-export function* authSaga() {
-  yield takeLatest(LOGIN, loginSaga);
-}
+// export function* authSaga() {
+//   yield takeLatest(LOGIN, loginSaga);
+// }
 
 const initialStete = {
   register: {
@@ -77,18 +77,15 @@ const auth = (state = initialStete, action) => {
           [action.key]: action.value,
         },
       };
-    case INITIALIZE_FORM:
-      return {
-        ...state,
-      };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-      };
-    case LOGIN_FAILURE:
-      return {
-        ...state,
-      };
+    // case INITIALIZE_FORM:
+    //   return {
+    //     ...state,
+    //   };
+    // case LOGIN_SUCCESS:
+    //   return {
+    //     ...state,
+    //   };
+    // case LOGIN_FAILURE:
     default:
       return state;
   }

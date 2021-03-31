@@ -195,11 +195,53 @@ $black: #333333;
       }
     }
 
-    button {
-      width: 100%;
-      height: 50px;
-      background-color: $blue;
-      color: white;
+    .payment-pay_button {
+      button {
+        width: 100%;
+        height: 50px;
+        background-color: $blue;
+        color: white;
+        p:nth-child(1) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .payment-page {
+    margin-bottom: 104px;
+
+    grid-template-columns: 1fr;
+    .payment-info {
+      .payment-info-header,
+      .payment-info-store,
+      .bill-content-data,
+      .payment-info-delivery_cost,
+      .payment-info-total_price {
+        display: none;
+      }
+      .payment-pay_button {
+        margin-bottom: 54px;
+
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          p {
+            font-size: 1.1rem;
+          }
+          p:nth-child(1) {
+            display: block;
+            margin-right: 10px;
+          }
+        }
+      }
     }
   }
 }

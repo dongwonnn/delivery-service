@@ -34,3 +34,8 @@
     }
   }
 }
+@media screen and (max-width: 768px) {
+  .allStores {
+    grid-template-columns: repeat(auto-fill, minmax(45%, auto));
+  }
+}
