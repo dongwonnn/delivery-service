@@ -35,23 +35,33 @@
 
 - [x] x버튼 -> bill 제거 reducer, 결제 완료 시 bills 제거 reducer 구현
 - [x] splice를 이용한 배열 초기화
-- [ ] jwt를 이용한 로그인 구현
+
+#### [0330]
+
+- [x] 반응형 웹 구현
+- [x] Redux Saga 로그인 auth template 구현
+
+#### [0331]
+
+- [ ] Infinity Scroll 구현
+- [ ] Scroll Issue 해결
 
 #### [발생 이슈]
 
+- [ ] scroll spy 재구현
+- [ ] infinity scorll 구현
 - [ ] 프론트단에서 할 수 있는 로그인 기능 구현 ( 이메일형식, 비밀번호 형식... )
 - [ ] jwt 이용한 로그인 구현 혹은 oAuth 사용
 - [ ] 장바구니에 담겨있을 때 다른 가게 장바구니 넣을 시 장바구니 초기화
 - [ ] Radio box 데이터 검증 ( 필수 선택 카테고리 )
 - [ ] redux saga로 데이터 가져올 때 이전에 있던 데이터 안보이게 처리
 - [ ] CORS, PROXY 문제
-- [ ] scroll spy 재구현
-- [ ] infinity scorll 구현
 - [ ] 리덕스 사가를 이용한 페이지 이동
 - [ ] useSelect 해체문법으로 한번에 작성하기
 - [ ] 초기값 설정 안되는 오류
 - [ ] Redux Persist -> cart는 store에 안들어가지는 이유
 - [ ] cart 초기화 했을 때 id 처리
+- [ ] Token, JWT, OAuth -> 세션, 쿠키
 - [x] 배열 초기화 : splice
 - [x] 클릭 이벤트 동시 처리
 - [x] x 눌렀을 때 Redux 제거, 결제 완료 시 에도 Redux 제거 기능 구현
@@ -60,7 +70,6 @@
 - [x] Redux Loading 구현
 - [x] useDispatch 사용 시 useCallback or useEffect 사용? : dispatch가 이벤트와 같이 함수로 사용된다면 useCallback 사용. 비동기 같이 렌더링 될때마다 실행된다면 useEffect 사용
 
-- [ ] Token, JWT, OAuth -> 세션, 쿠키
 - [x] 특정 컴포넌트에 nav 적용 제외시키기
 - [x] 객체 속성 접근자. 객체[key값] = value
 - [x] input value undefined 처리 : || ''
