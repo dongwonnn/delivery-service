@@ -49,8 +49,15 @@
 
 #### [0401]
 
+- [x] Reudx Saga 이용한 Network 통신. -> 로그인, 회원가입 기능 (post)
+- [ ] auth key를 이용한 로그인 상태 유지
+- [ ] cookie or session을 통한 로그인 유지
+- [ ] 프론트단에서 거를 수 있는 형식 구현 ( 비밀번호, 이메일 형식 등등 .. )
+
 #### [발생 이슈]
 
+- [ ] auth post 실패 시 발생하는 에러 메세지 콘솔 숨기기
+- [ ] login, register 성공했다면, initialForm을 통해 input 값들 초기화 시키기
 - [ ] scroll spy 재구현
 - [ ] infinity scorll 구현
 - [ ] 프론트단에서 할 수 있는 로그인 기능 구현 ( 이메일형식, 비밀번호 형식... )

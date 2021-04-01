@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeField, register } from '../reducers/auth';
+import { changeField, initializeForm, register } from '../reducers/auth';
 import './RegisterPage.scss';
 
 const RegisterPage = () => {
@@ -30,6 +30,10 @@ const RegisterPage = () => {
     console.log(password);
     authDispatch(register({ name, email, password }));
   };
+
+  useEffect(() => {
+    authDispatch(initializeForm('register'));
+  }, [authDispatch]);
 
   return (
     <div className="registerPage">

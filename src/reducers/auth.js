@@ -20,6 +20,11 @@ export const changeField = ({ form, key, value }) => ({
   value, // 실제 바꾸려는 값
 });
 
+export const initializeForm = (form) => ({
+  type: INITIALIZE_FORM,
+  form,
+});
+
 export const login = ({ email, password }) => ({
   type: LOGIN,
   email,
@@ -41,7 +46,6 @@ function* loginSaga(action) {
     const { email, password } = action;
     const response = yield call(authApi.login, { email, password });
     console.log(response);
-    console.log(response.data);
 
     yield put({
       type: LOGIN_SUCCESS,
@@ -87,10 +91,6 @@ export function* authSaga() {
   yield takeLatest(REGISTER, registerSaga);
 }
 
-export const initializeForm = () => ({
-  type: INITIALIZE_FORM,
-});
-
 const initialStete = {
   register: {
     name: '',
@@ -100,9 +100,11 @@ const initialStete = {
     phoneNum: '',
   },
   login: {
-    username: '',
+    email: '',
     password: '',
   },
+  auth: null,
+  authError: null,
 };
 
 const auth = (state = initialStete, action) => {
@@ -118,12 +120,20 @@ const auth = (state = initialStete, action) => {
     case INITIALIZE_FORM:
       return {
         ...state,
+        [action.form]: initialStete[action.form],
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
+        authError: null,
+        auth: action.payload,
       };
     case LOGIN_FAILURE:
+      return {
+        ...state,
+        authError: action.payload,
+        auth,
+      };
     default:
       return state;
   }
