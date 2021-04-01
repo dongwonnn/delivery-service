@@ -132,7 +132,6 @@ const auth = (state = initialStete, action) => {
       return {
         ...state,
         authError: action.payload,
-        auth,
       };
     default:
       return state;
