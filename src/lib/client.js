@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const client = axios.create();
 
-// client.defaults.baseURL = ""
+client.defaults.baseURL = 'https://delivery-service-web.herokuapp.com/api';
 
 // client.defaults.header.common['Authorization']
 

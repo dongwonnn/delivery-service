@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { changeField, initializeForm } from '../reducers/auth';
+import { changeField, initializeForm, login } from '../reducers/auth';
 import './LoginPage.scss';
 
 const LoginPage = () => {
@@ -23,6 +23,8 @@ const LoginPage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const { username, password } = form;
+    authDispatch(login({ username, password }));
   };
 
   useEffect(() => {

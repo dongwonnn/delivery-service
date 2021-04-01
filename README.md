@@ -38,13 +38,16 @@
 
 #### [0330]
 
-- [x] 반응형 웹 구현
+- [x] 반응형 css 구현
 - [x] Redux Saga 로그인 auth template 구현
 
 #### [0331]
 
-- [ ] Infinity Scroll 구현
-- [ ] Scroll Issue 해결
+- [x] Infinity Scroll 구현(1)
+      Redux Saga와 결합 방법, 데이터 쪼개서 구현
+- [x] Intersection Observer API 사용법
+
+#### [0401]
 
 #### [발생 이슈]
 
