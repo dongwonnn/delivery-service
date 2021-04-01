@@ -1,7 +1,6 @@
 import * as authApi from '../lib/authorization';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { finishLoding, startLoading } from './loading';
-import RegisterPage from '../pages/RegisterPage';
 
 const CHANGE_FIELD = 'auth/CHANGE_FIELD';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
@@ -21,9 +20,9 @@ export const changeField = ({ form, key, value }) => ({
   value, // 실제 바꾸려는 값
 });
 
-export const login = ({ username, password }) => ({
+export const login = ({ email, password }) => ({
   type: LOGIN,
-  username,
+  email,
   password,
 });
 
@@ -36,10 +35,11 @@ export const register = ({ name, email, password }) => ({
 
 // saga 생성
 function* loginSaga(action) {
+  console.log(action);
   yield put(startLoading(LOGIN));
   try {
-    const { username, password } = action;
-    const response = yield call(authApi.login, { username, password });
+    const { email, password } = action;
+    const response = yield call(authApi.login, { email, password });
     console.log(response);
     console.log(response.data);
 
@@ -95,7 +95,9 @@ const initialStete = {
   register: {
     name: '',
     password: '',
+    passwordConfirm: '',
     email: '',
+    phoneNum: '',
   },
   login: {
     username: '',

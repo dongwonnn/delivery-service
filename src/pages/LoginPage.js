@@ -23,8 +23,8 @@ const LoginPage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const { username, password } = form;
-    authDispatch(login({ username, password }));
+    const { email, password } = form;
+    authDispatch(login({ email, password }));
   };
 
   useEffect(() => {
@@ -35,20 +35,20 @@ const LoginPage = () => {
     <div className="loginPage">
       <header className="login-title">
         <h1 className="login-logo">
-          <img src="/images/coupang-logo.jpg" alt="coupang logo" />
+          {/* <img src="/images/coupang-logo.jpg" alt="coupang logo" /> */}
         </h1>
       </header>
       <main className="login-main">
         <form onSubmit={onSubmit}>
           <div className="login-content">
             <input
-              name="username"
+              name="email"
               type="text"
               placeholder="아이디(이메일)"
               onChange={onChange}
               // Reducer로 데이터가 변경됐을 때 input 작동
               // undefined 에러 처리 || ''
-              value={form.username || ''}
+              value={form.email || ''}
             />
             <input
               name="password"

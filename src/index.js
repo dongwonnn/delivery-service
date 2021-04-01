@@ -9,7 +9,7 @@ import store from './reducers/store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename="delivery-service">
       <App />
     </BrowserRouter>
   </Provider>,

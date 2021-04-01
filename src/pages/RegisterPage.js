@@ -28,7 +28,7 @@ const RegisterPage = () => {
     console.log(name);
     console.log(email);
     console.log(password);
-    authDispatch(re({ name, email, password }));
+    authDispatch(register({ name, email, password }));
   };
 
   return (
@@ -47,30 +47,35 @@ const RegisterPage = () => {
               name="email"
               placeholder="아이디(이메일)"
               onChange={onChange}
+              value={form.email || ''}
             />
             <input
               type="password"
               name="password"
               placeholder="비밀번호"
               onChange={onChange}
+              value={form.password || ''}
             />
             <input
               type="password"
               name="passwordConfirm"
               placeholder="비밀번호 확인"
               onChange={onChange}
+              value={form.passwordConfirm || ''}
             />
             <input
               type="text"
               name="name"
               placeholder="이름"
               onChange={onChange}
+              value={form.name || ''}
             />
             <input
               type="text"
               name="phoneNum"
               placeholder="휴대폰 번호"
               onChange={onChange}
+              value={form.phoneNum || ''}
             />
             <div>
               <button className="register-submit">동의하고 가입하기</button>
