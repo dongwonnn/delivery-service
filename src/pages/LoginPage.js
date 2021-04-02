@@ -2,17 +2,21 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { changeField, initializeForm, login } from '../reducers/auth';
+import { check } from '../reducers/user';
 import './LoginPage.scss';
 
-const LoginPage = () => {
-  const authDispatch = useDispatch();
-  const { form } = useSelector(({ auth }) => ({
+const LoginPage = ({ history }) => {
+  const dispatch = useDispatch();
+  const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
     form: auth.login,
+    auth: auth.auth,
+    authError: auth.authError,
+    user: user.user,
   }));
 
   const onChange = (e) => {
     const { value, name } = e.target;
-    authDispatch(
+    dispatch(
       changeField({
         form: 'login',
         key: name,
@@ -24,12 +28,29 @@ const LoginPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const { email, password } = form;
-    authDispatch(login({ email, password }));
+    dispatch(login({ email, password }));
   };
 
   useEffect(() => {
-    authDispatch(initializeForm('login'));
-  }, [authDispatch]);
+    dispatch(initializeForm('login'));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (authError) {
+      console.log('오류 발생');
+      return;
+    }
+    if (auth) {
+      console.log('로그인 성공');
+      dispatch(check());
+    }
+  }, [auth, authError, dispatch]);
+
+  useEffect(() => {
+    if (user) {
+      history.push('/');
+    }
+  }, [history, user]);
 
   return (
     <div className="loginPage">

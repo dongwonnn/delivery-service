@@ -45,7 +45,7 @@ function* loginSaga(action) {
   try {
     const { email, password } = action;
     const response = yield call(authApi.login, { email, password });
-    console.log(response);
+    console.log(response.headers);
 
     yield put({
       type: LOGIN_SUCCESS,
