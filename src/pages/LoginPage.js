@@ -37,20 +37,25 @@ const LoginPage = ({ history }) => {
 
   useEffect(() => {
     if (authError) {
-      console.log('오류 발생');
+      alert('로그인 실패');
       return;
     }
     if (auth) {
-      console.log('로그인 성공');
       dispatch(check());
     }
   }, [auth, authError, dispatch]);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     history.push('/');
-  //   }
-  // }, [history, user]);
+  useEffect(() => {
+    if (user) {
+      history.push('/');
+
+      try {
+        localStorage.setItem('user', JSON.stringify(user));
+      } catch (e) {
+        console.log('localStorage is not working');
+      }
+    }
+  }, [history, user]);
 
   return (
     <div className="loginPage">

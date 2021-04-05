@@ -2,18 +2,31 @@ import * as authApi from '../lib/authorization';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { finishLoding, startLoading } from './loading';
 
+const TEMP_SET_USER = 'user/TEMP_SET_USER';
+
 const CHECK = 'user/CHECK';
 const CHECK_SUCCESS = 'user/CHECK_SUCCESS';
 const CHECK_FAILURE = 'user/CHECK_FAILURE';
+
+const LOGOUT = 'user/LOGOUT';
 
 export const check = () => ({
   type: CHECK,
 });
 
-function* checkSaga(action) {
+export const tempSetUser = (user) => ({
+  type: TEMP_SET_USER,
+  user,
+});
+
+export const logout = () => ({
+  type: LOGOUT,
+});
+
+function* checkSaga() {
   yield put(startLoading(CHECK));
   try {
-    const response = yield call(authApi.check, action.payload);
+    const response = yield call(authApi.check);
 
     yield put({
       type: CHECK_SUCCESS,
@@ -29,9 +42,28 @@ function* checkSaga(action) {
   yield put(finishLoding(CHECK));
 }
 
+// function checkFailureSaga() {
+//   try {
+//     localStorage.removeItem('user');
+//   } catch (e) {
+//     console.log('localStorage is not working');
+//   }
+// }
+
+function* logoutSaga() {
+  try {
+    yield call(authApi.logout);
+    localStorage.removeItem('user');
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 // SAGA 통합
 export function* userSaga() {
   yield takeLatest(CHECK, checkSaga);
+  // yield takeLatest(CHECK_FAILURE, checkFailureSaga);
+  yield takeLatest(LOGOUT, logoutSaga);
 }
 
 const initialStete = {
@@ -41,13 +73,25 @@ const initialStete = {
 
 const user = (state = initialStete, action) => {
   switch (action.type) {
+    case TEMP_SET_USER:
+      return {
+        ...state,
+        user: action.user,
+      };
     case CHECK_SUCCESS:
       return {
         ...state,
+        user: action.payload,
       };
     case CHECK_FAILURE:
       return {
         ...state,
+        checkError: action.payload,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        user: null,
       };
     default:
       return state;

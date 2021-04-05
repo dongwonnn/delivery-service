@@ -10,7 +10,7 @@ $blue: #4eacf8;
   text-align: center;
 
   display: grid;
-  grid-template-columns: 2fr 8fr 2fr 2fr;
+  grid-template-columns: 2fr 8fr 2fr;
   column-gap: 5px;
 
   justify-content: center;
@@ -18,7 +18,7 @@ $blue: #4eacf8;
 
   button {
     padding: 5px 0;
-
+    color: #a9b5c7;
     a {
       color: #a9b5c7;
     }
