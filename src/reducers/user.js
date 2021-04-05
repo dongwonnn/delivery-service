@@ -10,10 +10,10 @@ export const check = () => ({
   type: CHECK,
 });
 
-function* checkSaga() {
+function* checkSaga(action) {
   yield put(startLoading(CHECK));
   try {
-    const response = yield call(authApi.check);
+    const response = yield call(authApi.check, action.payload);
 
     yield put({
       type: CHECK_SUCCESS,

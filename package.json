@@ -158,5 +158,6 @@
       "react-app"
     ]
   },
-  "homepage": "delivery-service"
+  "homepage": "delivery-service",
+  "proxy": "https://delivery-service-web.herokuapp.com/api"
 }

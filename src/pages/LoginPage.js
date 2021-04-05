@@ -46,11 +46,11 @@ const LoginPage = ({ history }) => {
     }
   }, [auth, authError, dispatch]);
 
-  useEffect(() => {
-    if (user) {
-      history.push('/');
-    }
-  }, [history, user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     history.push('/');
+  //   }
+  // }, [history, user]);
 
   return (
     <div className="loginPage">

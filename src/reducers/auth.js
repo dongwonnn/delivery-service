@@ -1,6 +1,7 @@
 import * as authApi from '../lib/authorization';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { finishLoding, startLoading } from './loading';
+import client from '../lib/client';
 
 const CHANGE_FIELD = 'auth/CHANGE_FIELD';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
@@ -37,7 +38,6 @@ export const register = ({ name, email, password }) => ({
   email,
   password,
 });
-
 // saga 생성
 function* loginSaga(action) {
   console.log(action);
@@ -45,7 +45,9 @@ function* loginSaga(action) {
   try {
     const { email, password } = action;
     const response = yield call(authApi.login, { email, password });
-    console.log(response.headers);
+    const ACCESS_TOKEN = response.headers.authorization;
+
+    client.defaults.headers.common['Authorization'] = `Bearer ${ACCESS_TOKEN}`;
 
     yield put({
       type: LOGIN_SUCCESS,
