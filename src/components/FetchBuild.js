@@ -11,14 +11,16 @@ const FetchBuild = ({ loading, setCount }) => {
     return () => {
       fetchMoreObserver.unobserve(fetchMoreTrigger.current);
     };
-  }, []);
+  });
 
   return (
     <div
       id="fetchMore"
       className={loading ? 'loading' : ''}
       ref={fetchMoreTrigger}
-    />
+    >
+      .
+    </div>
   );
 };
 

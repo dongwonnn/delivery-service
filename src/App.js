@@ -34,7 +34,6 @@ const App = () => {
             exact={true}
             component={PaymentPage}
           />
-          <Route path="/test" component={TestPage} />
         </>
         <Route render={({ location }) => <div>존재하지 않는 페이지</div>} />
       </Switch>

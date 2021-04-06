@@ -1,6 +1,7 @@
 import React from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import './StoreBuild.scss';
 
 const StoreBuild = ({ loading, stores }) => {
   return (

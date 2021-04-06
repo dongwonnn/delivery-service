@@ -12,7 +12,7 @@ const TestPage = () => {
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  console.log(reduxData);
+  console.log(stores);
 
   useEffect(() => {
     setLoading(true);
@@ -39,11 +39,10 @@ const TestPage = () => {
   }
 
   return (
-    <div>
-      <h1>테스트</h1>
+    <>
       <StoreBuild loading={loading} stores={stores} />
       <FetchBuild loading={loading} setCount={setCount} />
-    </div>
+    </>
   );
 };
 
