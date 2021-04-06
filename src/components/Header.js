@@ -1,15 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout } from '../reducers/user';
+import { logout } from '../reducers/auth';
 import './Header.scss';
 
 const Header = () => {
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
   const onLogoutBtn = () => {
-    dispatch(logout());
+    dispatch(logout(localStorage.getItem('access_token')));
   };
 
   return (

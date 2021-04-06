@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { changeField, initializeForm, login } from '../reducers/auth';
-import { check } from '../reducers/user';
+import { changeField, initializeForm, login, check } from '../reducers/auth';
 import './LoginPage.scss';
 
 const LoginPage = ({ history }) => {
   const dispatch = useDispatch();
-  const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
+  const { form, auth, authError, user } = useSelector(({ auth }) => ({
     form: auth.login,
     auth: auth.auth,
     authError: auth.authError,
-    user: user.user,
+    user: auth.user,
   }));
 
   const onChange = (e) => {
