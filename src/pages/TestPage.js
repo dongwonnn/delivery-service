@@ -12,8 +12,6 @@ const TestPage = () => {
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  console.log(stores);
-
   useEffect(() => {
     setLoading(true);
 

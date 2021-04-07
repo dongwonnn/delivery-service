@@ -11,7 +11,7 @@ const FetchBuild = ({ loading, setCount }) => {
     return () => {
       fetchMoreObserver.unobserve(fetchMoreTrigger.current);
     };
-  });
+  }, []);
 
   return (
     <div
