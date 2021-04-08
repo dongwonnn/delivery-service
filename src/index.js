@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './reducers/store';
-import { CookiesProvider } from 'react-cookie';
 import { check } from './reducers/auth';
 
 function loadUser() {
@@ -27,9 +26,7 @@ loadUser();
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter basename="delivery-service">
-      <CookiesProvider>
-        <App />
-      </CookiesProvider>
+      <App />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'),
