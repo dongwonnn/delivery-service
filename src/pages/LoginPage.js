@@ -40,7 +40,7 @@ const LoginPage = ({ history }) => {
       return;
     }
     if (auth) {
-      dispatch(check());
+      dispatch(check(localStorage.getItem('access_token')));
     }
   }, [auth, authError, dispatch]);
 
