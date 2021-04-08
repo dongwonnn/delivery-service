@@ -20,7 +20,7 @@ const Header = () => {
         <button onClick={() => onLogoutBtn()}>로그아웃</button>
       ) : (
         <button>
-          <Link to="login">로그인</Link>
+          <Link to="/login">로그인</Link>
         </button>
       )}
     </div>
