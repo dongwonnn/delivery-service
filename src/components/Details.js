@@ -12,8 +12,10 @@ const Details = ({ storeId }) => {
   const contentRef = useRef([]);
 
   const details = useSelector((state) => state.data.details);
-  const loadingDetails = useSelector((state) => state.data.GET_DETAILS);
+  const loadingDetails = useSelector((state) => state.loading.GET_DETAILS);
   const detailsDisaptch = useDispatch();
+
+  console.log(loadingDetails);
 
   useEffect(() => {
     detailsDisaptch(getDetails(storeId));
@@ -28,7 +30,7 @@ const Details = ({ storeId }) => {
 
   return (
     <div className="detail-page">
-      {loadingDetails && '로딩 중'}
+      {loadingDetails && '로딩 중..'}
       {!loadingDetails && details && (
         <div className="detail-left">
           <img src={details.poster_image} alt="대표 이미지"></img>

@@ -10,11 +10,38 @@ $blue: #4eacf8;
   text-align: center;
 
   display: grid;
-  grid-template-columns: 2fr 8fr 2fr;
+  grid-template-columns: 2fr 6fr 2fr;
   column-gap: 5px;
 
   justify-content: center;
   align-items: center;
+
+  .header_seaerch {
+    background-color: #f3f3f3;
+    border-radius: 100px;
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+    input {
+      border: none;
+      margin-left: 10px;
+      padding: 5px;
+      width: 90%;
+      border-radius: 30px;
+      background-color: #f3f3f3;
+
+      color: #9e9e9e;
+      font-weight: bold;
+    }
+    input:hover {
+      border: none;
+    }
+    svg {
+      font-size: 1.5rem;
+      margin-right: 10px;
+    }
+  }
 
   button {
     padding: 5px 0;

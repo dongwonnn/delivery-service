@@ -17,12 +17,12 @@ function loading(state = initialStete, action) {
     case START_LOADING:
       return {
         ...state,
-        [action.payload]: true,
+        [action.requestType]: true,
       };
     case FINISH_LOADING:
       return {
         ...state,
-        [action.payload]: false,
+        [action.requestType]: false,
       };
     default:
       return state;

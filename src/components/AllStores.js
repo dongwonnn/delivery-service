@@ -1,23 +1,24 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './AllStores.scss';
 import { AiFillStar } from 'react-icons/ai';
-import { useDispatch, useSelector } from 'react-redux';
-import { getStores } from '../reducers/data';
+import { stores } from '../data/stores';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getStores } from '../reducers/data';
 const AllStores = () => {
-  const stores = useSelector((state) => state.data.stores);
-  const loadingStores = useSelector((state) => state.data.GET_STORES);
+  // const stores = useSelector((state) => state.data.stores);
+  // const loadingStores = useSelector((state) => state.data.GET_STORES);
 
-  const storesDispatch = useDispatch();
-  useEffect(() => {
-    storesDispatch(getStores());
-  }, [storesDispatch]);
+  // const storesDispatch = useDispatch();
+  // useEffect(() => {
+  //   storesDispatch(getStores());
+  // }, [storesDispatch]);
 
   return (
     <div className="allStores">
-      {loadingStores && '로딩 중'}
-      {!loadingStores &&
-        stores &&
+      {/* {loadingStores && '로딩 중'} */}
+      {/* {!loadingStores && */}
+      {stores &&
         stores.map((store) => (
           <div className="item-card" key={store.id}>
             <Link to={`/detail/${store.id}`}>

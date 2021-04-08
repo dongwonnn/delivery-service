@@ -81,7 +81,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -158,6 +160,9 @@
       "react-app"
     ]
   },
-  "homepage": "delivery-service",
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  },
+  "homepage": "http://dongwonnn.github.io/delivery-service",
   "proxy": "https://delivery-service-web.herokuapp.com/api"
 }

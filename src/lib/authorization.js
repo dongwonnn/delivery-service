@@ -1,6 +1,7 @@
 import client from './client';
 
-// https://delivery-service-web.herokuapp.com/api/documentation
+// https://delivery-service-web.herokuapp.com/api
+// "homepage": "http://dongwonnn.github.io/delivery-service",
 
 export const login = ({ email, password }) =>
   client.post('/auth/login', { email, password });

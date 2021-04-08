@@ -36,7 +36,7 @@ const RegisterPage = ({ history }) => {
     if (regiCheck) {
       history.push('/login');
     }
-  }, [regiCheck, regiError]);
+  }, [regiCheck, regiError, history]);
 
   useEffect(() => {
     dispatch(initializeForm('register'));
