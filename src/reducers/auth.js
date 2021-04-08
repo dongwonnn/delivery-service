@@ -171,6 +171,8 @@ const initialStete = {
     email: '',
     password: '',
   },
+  regiCheck: null,
+  regiError: null,
   auth: null,
   authError: null,
   user: null,
@@ -190,6 +192,17 @@ const auth = (state = initialStete, action) => {
       return {
         ...state,
         [action.form]: initialStete[action.form],
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        regiError: null,
+        regiCheck: action.payload,
+      };
+    case REGISTER_FAILURE:
+      return {
+        ...state,
+        regiError: action.payload,
       };
     case LOGIN_SUCCESS:
       return {
