@@ -6,6 +6,10 @@ export const getCategories = () =>
 
 export const getStores = () => axios.get('http://localhost:4000/stores');
 
-export const getDetails = (storeId) => axios.get(`/eateries/${storeId}`);
+export const getDetails = (storeId) =>
+  axios.get(
+    `https://delivery-service-web.herokuapp.com/api/eateries/${storeId}`,
+  );
 
-export const getMenus = (menuId) => axios.get(`/menus/${menuId}`);
+export const getMenus = (menuId) =>
+  axios.get(`https://delivery-service-web.herokuapp.com/api/menus/${menuId}`);
