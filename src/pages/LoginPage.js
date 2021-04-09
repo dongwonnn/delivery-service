@@ -40,7 +40,7 @@ const LoginPage = ({ history }) => {
       return;
     }
     if (auth) {
-      dispatch(check(localStorage.getItem('access_token')));
+      dispatch(check());
     }
   }, [auth, authError, dispatch]);
 
@@ -60,7 +60,7 @@ const LoginPage = ({ history }) => {
     <div className="loginPage">
       <header className="login-title">
         <h1 className="login-logo">
-          {/* <img src="/images/coupang-logo.jpg" alt="coupang logo" /> */}
+          <img src="/images/coupang-logo.jpg" alt="coupang logo" />
         </h1>
       </header>
       <main className="login-main">

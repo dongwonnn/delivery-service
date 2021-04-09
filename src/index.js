@@ -11,11 +11,10 @@ import { check } from './reducers/auth';
 function loadUser() {
   try {
     const user = localStorage.getItem('user');
-    const access_token = localStorage.getItem('access_token');
 
     if (!user) return;
 
-    store.dispatch(check(access_token));
+    store.dispatch(check());
   } catch (e) {
     console.log('localStorage is not working');
   }

@@ -12,19 +12,19 @@ const Header = () => {
   const loadingCheck = useSelector((state) => state.loading.CHECK);
 
   const onLogoutBtn = () => {
-    dispatch(logout(localStorage.getItem('access_token')));
+    dispatch(logout());
   };
 
   return (
     <div className="header">
       <div className="header_logo"></div>
       <div className="header_seaerch">
+        <BsSearch />
         <input
           type="text"
           placeholder="검색어를 입력하세요."
           name="inputValue"
         />
-        <BsSearch />
       </div>
       {!loadingCheck &&
         (user ? (

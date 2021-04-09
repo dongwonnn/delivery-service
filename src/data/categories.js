@@ -54,4 +54,14 @@ export const categories = [
     text: '패스트푸드',
     imgSrc: '/images/categories/japan-food.jpg',
   },
+  {
+    name: 'carousel1',
+    text: '캐로샐1',
+    imgSrc: '/images/categories/japan-food.jpg',
+  },
+  {
+    name: 'carousel2',
+    text: '캐로샐2',
+    imgSrc: '/images/categories/japan-food.jpg',
+  },
 ];

@@ -49,7 +49,6 @@ export const register = ({ name, email, password }) => ({
 
 export const check = (token) => ({
   type: CHECK,
-  token,
 });
 
 export const logout = (token) => ({
@@ -66,6 +65,8 @@ function* loginSaga(action) {
     const ACCESS_TOKEN = response.headers.authorization;
 
     localStorage.setItem('access_token', ACCESS_TOKEN);
+
+    console.log(response);
 
     yield put({
       type: LOGIN_SUCCESS,
@@ -105,11 +106,12 @@ function* registerSaga(action) {
   yield put(finishLoding(REGISTER));
 }
 
-function* checkSaga(action) {
+function* checkSaga() {
   yield put(startLoading(CHECK));
   try {
-    const ACCESS_TOKEN = action.token;
-    client.defaults.headers.common['Authorization'] = `Bearer ${ACCESS_TOKEN}`;
+    client.defaults.headers.common[
+      'Authorization'
+    ] = `Bearer ${localStorage.getItem('access_token')}`;
 
     const response = yield call(authApi.check);
 
@@ -127,12 +129,13 @@ function* checkSaga(action) {
   yield put(finishLoding(CHECK));
 }
 
-function* logoutSaga(action) {
+function* logoutSaga() {
   yield put(startLoading(LOGOUT));
 
   try {
-    const ACCESS_TOKEN = action.token;
-    client.defaults.headers.common['Authorization'] = `Bearer ${ACCESS_TOKEN}`;
+    client.defaults.headers.common[
+      'Authorization'
+    ] = `Bearer ${localStorage.getItem('access_token')}`;
 
     yield call(authApi.logout);
     localStorage.removeItem('user');
