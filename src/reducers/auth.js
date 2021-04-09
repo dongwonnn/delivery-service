@@ -7,8 +7,6 @@ const CHANGE_FIELD = 'auth/CHANGE_FIELD';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
 
 const LOGIN = 'auth/LOGIN';
-const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
-const LOGIN_FAILURE = 'auth/LOGIN_FAILURE';
 
 const REGISTER = 'auth/REGISTER';
 const REGISTER_SUCCESS = 'auth/REGISTER_SUCCESS';
@@ -34,10 +32,9 @@ export const initializeForm = (form) => ({
   form,
 });
 
-export const login = ({ email, password }) => ({
+export const login = (responseBody) => ({
   type: LOGIN,
-  email,
-  password,
+  responseBody,
 });
 
 export const register = ({ name, email, password }) => ({
@@ -49,6 +46,7 @@ export const register = ({ name, email, password }) => ({
 
 export const check = (token) => ({
   type: CHECK,
+  token,
 });
 
 export const logout = (token) => ({
@@ -57,31 +55,6 @@ export const logout = (token) => ({
 });
 
 // saga 생성
-function* loginSaga(action) {
-  yield put(startLoading(LOGIN));
-  try {
-    const { email, password } = action;
-    const response = yield call(authApi.login, { email, password });
-    const ACCESS_TOKEN = response.headers.authorization;
-
-    localStorage.setItem('access_token', ACCESS_TOKEN);
-
-    console.log(response);
-
-    yield put({
-      type: LOGIN_SUCCESS,
-      payload: response.data,
-    });
-  } catch (e) {
-    yield put({
-      type: LOGIN_FAILURE,
-      payload: e,
-      error: true,
-    });
-  }
-  yield put(finishLoding(LOGIN));
-}
-
 function* registerSaga(action) {
   yield put(startLoading(REGISTER));
   try {
@@ -106,15 +79,13 @@ function* registerSaga(action) {
   yield put(finishLoding(REGISTER));
 }
 
-function* checkSaga() {
+function* checkSaga(action) {
   yield put(startLoading(CHECK));
   try {
-    client.defaults.headers.common[
-      'Authorization'
-    ] = `Bearer ${localStorage.getItem('access_token')}`;
+    const ACCESS_TOKEN = action.token;
+    client.defaults.headers.common['Authorization'] = `Bearer ${ACCESS_TOKEN}`;
 
     const response = yield call(authApi.check);
-
     yield put({
       type: CHECK_SUCCESS,
       payload: response.data,
@@ -129,17 +100,14 @@ function* checkSaga() {
   yield put(finishLoding(CHECK));
 }
 
-function* logoutSaga() {
+function* logoutSaga(action) {
   yield put(startLoading(LOGOUT));
-
   try {
-    client.defaults.headers.common[
-      'Authorization'
-    ] = `Bearer ${localStorage.getItem('access_token')}`;
+    const ACCESS_TOKEN = action.token;
+    client.defaults.headers.common['Authorization'] = `Bearer ${ACCESS_TOKEN}`;
 
     yield call(authApi.logout);
     localStorage.removeItem('user');
-    localStorage.removeItem('access_token');
 
     yield put({
       type: LOGOUT_SUCCESS,
@@ -156,7 +124,6 @@ function* logoutSaga() {
 
 // SAGA 통합
 export function* authSaga() {
-  yield takeLatest(LOGIN, loginSaga);
   yield takeLatest(REGISTER, registerSaga);
   yield takeLatest(CHECK, checkSaga);
   yield takeLatest(LOGOUT, logoutSaga);
@@ -196,6 +163,11 @@ const auth = (state = initialStete, action) => {
         ...state,
         [action.form]: initialStete[action.form],
       };
+    case LOGIN:
+      return {
+        ...state,
+        auth: action.responseBody,
+      };
     case REGISTER_SUCCESS:
       return {
         ...state,
@@ -206,17 +178,6 @@ const auth = (state = initialStete, action) => {
       return {
         ...state,
         regiError: action.payload,
-      };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        authError: null,
-        auth: action.payload,
-      };
-    case LOGIN_FAILURE:
-      return {
-        ...state,
-        authError: action.payload,
       };
     case CHECK_SUCCESS:
       return {

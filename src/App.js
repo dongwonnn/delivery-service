@@ -14,6 +14,20 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 
 const App = () => {
+  function loadUser() {
+    try {
+      const user = localStorage.getItem('user');
+
+      if (!user) return;
+
+      store.dispatch(check());
+    } catch (e) {
+      console.log('localStorage is not working');
+    }
+  }
+
+  loadUser();
+
   return (
     <div className="body">
       <Switch>

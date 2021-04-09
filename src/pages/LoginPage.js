@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
+import { useCookies } from 'react-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { changeField, initializeForm, login, check } from '../reducers/auth';
+import { changeField, initializeForm, check, login } from '../reducers/auth';
 import './LoginPage.scss';
+import * as authApi from '../lib/authorization';
 
 const LoginPage = ({ history }) => {
   const dispatch = useDispatch();
@@ -12,6 +14,28 @@ const LoginPage = ({ history }) => {
     authError: auth.authError,
     user: auth.user,
   }));
+  const [cookies, setCookie] = useCookies(['access_token']);
+
+  const authData = async ({ email, password }) => {
+    try {
+      const response = await authApi.login({ email, password });
+
+      const responseBody = response.data;
+      const accessToken = response.headers.authorization;
+      const maxAge = response.data.data.ttl;
+
+      setCookie('access_token', accessToken, [
+        {
+          maxAge: maxAge * 60,
+        },
+        { httpOnly: true },
+      ]);
+
+      dispatch(login(responseBody));
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const onChange = (e) => {
     const { value, name } = e.target;
@@ -27,7 +51,7 @@ const LoginPage = ({ history }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     const { email, password } = form;
-    dispatch(login({ email, password }));
+    authData({ email, password });
   };
 
   useEffect(() => {
@@ -40,7 +64,8 @@ const LoginPage = ({ history }) => {
       return;
     }
     if (auth) {
-      dispatch(check());
+      const ACCESS_TOKEN = cookies.access_token;
+      dispatch(check(ACCESS_TOKEN));
     }
   }, [auth, authError, dispatch]);
 
