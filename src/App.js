@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import FavoritePage from './pages/FavoritePage';
@@ -12,21 +12,27 @@ import Header from './components/Header';
 import './App.scss';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import { check } from './reducers/auth';
+import { useDispatch } from 'react-redux';
 
 const App = () => {
-  function loadUser() {
-    try {
-      const user = localStorage.getItem('user');
+  const dispatch = useDispatch();
 
-      if (!user) return;
+  useEffect(() => {
+    function loadUser() {
+      try {
+        const user = localStorage.getItem('user');
 
-      store.dispatch(check());
-    } catch (e) {
-      console.log('localStorage is not working');
+        if (!user) return;
+
+        dispatch(check());
+      } catch (e) {
+        console.log('localStorage is not working');
+      }
     }
-  }
 
-  loadUser();
+    loadUser();
+  }, [dispatch]);
 
   return (
     <div className="body">
