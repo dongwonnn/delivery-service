@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classNames from '../../node_modules/classnames/index';
 import BodyBlackoutStyle from './BodyBlackoutStyle';
 import DetailMenuModal from './DetailMenuModal';
 import './Menu.scss';
@@ -9,9 +10,13 @@ const Menu = ({ menu, menuId }) => {
   const onSetIsVisible = (active) => {
     setIsVisible(active);
   };
+
   return (
     <div>
-      <div className="menu" onClick={() => onSetIsVisible(true)}>
+      <div
+        className={classNames('menu', { isVisible })}
+        onClick={() => onSetIsVisible(true)}
+      >
         <div className="menu-info">
           <p className="menu-title">{menu.name}</p>
           <p className="menu-price">{menu.price}원</p>
@@ -22,10 +27,10 @@ const Menu = ({ menu, menuId }) => {
         </div>
       </div>
       <div>
-        {isVisible && <BodyBlackoutStyle onSetIsVisible={onSetIsVisible} />}
         {isVisible && (
           <DetailMenuModal menuId={menu.id} setIsVisible={setIsVisible} />
         )}
+        {isVisible && <BodyBlackoutStyle onSetIsVisible={onSetIsVisible} />}
       </div>
     </div>
   );

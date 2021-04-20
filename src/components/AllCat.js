@@ -1,25 +1,67 @@
-import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { categories } from '../data/categories';
+// import { useDispatch, useSelector } from 'react-redux';
 // import { getCat } from '../reducers/data';
 import './AllCat.scss';
-import { categories } from '../data/categories';
+
+const throttle = (func, ms) => {
+  let throttled = false;
+  return (...args) => {
+    if (!throttled) {
+      throttled = true;
+      setTimeout(() => {
+        func(...args);
+        throttled = false;
+      }, ms);
+    }
+  };
+};
 
 const AllCat = () => {
-  // const cat = useSelector((state) => state.data.cat);
-  // const loadingCat = useSelector((state) => state.data.GET_CAT);
+  const scrollRef = useRef(null);
+  const [isClicked, setIsClicked] = useState(false);
+  const [startX, setStartX] = useState(0);
 
-  // const catDispatch = useDispatch();
-  // useEffect(() => {
-  //   catDispatch(getCat());
-  // }, [catDispatch]);
+  const onScrollIn = (e) => {
+    e.preventDefault();
+    setIsClicked(true);
+    setStartX(e.pageX + scrollRef.current.scrollLeft);
+  };
+
+  const onScrollOut = () => {
+    setIsClicked(false);
+  };
+
+  const onScrollMove = (e) => {
+    if (isClicked) {
+      const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
+
+      scrollRef.current.scrollLeft = startX - e.pageX;
+
+      if (scrollLeft === 0) {
+        setStartX(e.pageX);
+      } else if (scrollWidth <= clientWidth + scrollLeft) {
+        setStartX(e.pageX + scrollLeft);
+      }
+    }
+  };
+
+  const onThrottleScrollMove = throttle(onScrollMove, 100);
 
   return (
     <div className="allCat">
       {/* {loadingCat && '로딩 중'} */}
       {/* {!loadingCat && cat && ( */}
       {categories && (
-        <div className="categories">
+        <div
+          className="categories"
+          onMouseDown={onScrollIn}
+          onMouseMove={onThrottleScrollMove}
+          onMouseUp={onScrollOut}
+          onMouseLeave={onScrollOut}
+          ref={scrollRef}
+        >
           {categories.map((category) => (
             <div className="category" key={category.name}>
               <Link to={`/category/${category.text}`}>
@@ -35,3 +77,11 @@ const AllCat = () => {
 };
 
 export default React.memo(AllCat);
+
+// const cat = useSelector((state) => state.data.cat);
+// const loadingCat = useSelector((state) => state.data.GET_CAT);
+
+// const catDispatch = useDispatch();
+// useEffect(() => {
+//   catDispatch(getCat());
+// }, [catDispatch]);

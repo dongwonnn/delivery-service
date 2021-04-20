@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import FavoritePage from './pages/FavoritePage';
 import MainPage from './pages/MainPage';
@@ -67,13 +67,15 @@ const App = () => {
             render={(props) => <ProfilePage {...props} />}
           />
 
-          <AuthRoute
+          {/* <AuthRoute
             user={user}
             path="/detail/:storeId/payment"
             render={(props) => <PaymentPage {...props} />}
-          />
+          /> */}
+          <Redirect from="*" to="/" />
         </>
-        <Route render={({ location }) => <div>존재하지 않는 페이지</div>} />
+
+        {/* <Route render={({ location }) => <div>존재하지 않는 페이지</div>} /> */}
       </Switch>
     </div>
   );

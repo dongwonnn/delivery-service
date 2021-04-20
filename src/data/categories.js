@@ -56,12 +56,22 @@ export const categories = [
   },
   {
     name: 'carousel1',
-    text: '캐로샐1',
+    text: '기타1',
     imgSrc: '/images/categories/japan-food.jpg',
   },
   {
     name: 'carousel2',
-    text: '캐로샐2',
+    text: '기타2',
+    imgSrc: '/images/categories/japan-food.jpg',
+  },
+  {
+    name: 'carousel3',
+    text: '기타3',
+    imgSrc: '/images/categories/japan-food.jpg',
+  },
+  {
+    name: 'carousel4',
+    text: '기타4',
     imgSrc: '/images/categories/japan-food.jpg',
   },
 ];
