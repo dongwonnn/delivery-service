@@ -34,6 +34,7 @@ const AllCat = () => {
   };
 
   const onScrollMove = (e) => {
+    console.log('check');
     if (isClicked) {
       const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
 
@@ -57,7 +58,7 @@ const AllCat = () => {
         <div
           className="categories"
           onMouseDown={onScrollIn}
-          onMouseMove={onThrottleScrollMove}
+          onMouseMove={isClicked ? onThrottleScrollMove : null}
           onMouseUp={onScrollOut}
           onMouseLeave={onScrollOut}
           ref={scrollRef}
