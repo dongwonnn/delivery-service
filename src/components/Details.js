@@ -15,8 +15,6 @@ const Details = ({ storeId }) => {
   const loadingDetails = useSelector((state) => state.loading.GET_DETAILS);
   const detailsDisaptch = useDispatch();
 
-  console.log(loadingDetails);
-
   useEffect(() => {
     detailsDisaptch(getDetails(storeId));
   }, [detailsDisaptch, storeId]);

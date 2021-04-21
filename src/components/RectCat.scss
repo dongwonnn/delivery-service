@@ -1,0 +1,34 @@
+.rectCat {
+  .rect-categories {
+    max-width: 1024px;
+    min-width: 280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+
+    padding: 20px;
+    column-gap: 45px;
+    row-gap: 15px;
+    justify-items: center;
+    align-items: center;
+    .rect-category {
+      width: 100%;
+
+      .rect-category-img {
+        width: 100%;
+        padding-bottom: 100%;
+
+        background-color: #eee;
+      }
+
+      p {
+        text-align: center;
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .rect-categories {
+      grid-template-columns: repeat(auto-fill, minmax(30%, auto));
+    }
+  }
+}

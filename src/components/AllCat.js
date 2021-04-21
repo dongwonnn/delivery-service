@@ -20,22 +20,22 @@ const throttle = (func, ms) => {
 
 const AllCat = () => {
   const scrollRef = useRef(null);
-  const [isClicked, setIsClicked] = useState(false);
-  const [startX, setStartX] = useState(0);
+  const [isDrag, setIsDrag] = useState(false);
+  const [startX, setStartX] = useState();
 
-  const onScrollIn = (e) => {
+  const onDragStart = (e) => {
     e.preventDefault();
-    setIsClicked(true);
+    setIsDrag(true);
     setStartX(e.pageX + scrollRef.current.scrollLeft);
   };
 
-  const onScrollOut = () => {
-    setIsClicked(false);
+  const onDragEnd = () => {
+    setIsDrag(false);
   };
 
-  const onScrollMove = (e) => {
+  const onDragMove = (e) => {
     console.log('check');
-    if (isClicked) {
+    if (isDrag) {
       const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
 
       scrollRef.current.scrollLeft = startX - e.pageX;
@@ -48,7 +48,8 @@ const AllCat = () => {
     }
   };
 
-  const onThrottleScrollMove = throttle(onScrollMove, 100);
+  const delay = 100;
+  const onThrottleDragMove = throttle(onDragMove, delay);
 
   return (
     <div className="allCat">
@@ -57,10 +58,10 @@ const AllCat = () => {
       {categories && (
         <div
           className="categories"
-          onMouseDown={onScrollIn}
-          onMouseMove={isClicked ? onThrottleScrollMove : null}
-          onMouseUp={onScrollOut}
-          onMouseLeave={onScrollOut}
+          onMouseDown={onDragStart}
+          onMouseMove={isDrag ? onThrottleDragMove : null}
+          onMouseUp={onDragEnd}
+          onMouseLeave={onDragEnd}
           ref={scrollRef}
         >
           {categories.map((category) => (

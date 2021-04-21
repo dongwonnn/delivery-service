@@ -27,14 +27,6 @@ const Header = () => {
   return (
     <div className="header">
       <div className="header_logo"></div>
-      <div className="header_seaerch">
-        <BsSearch />
-        <input
-          type="text"
-          placeholder="검색어를 입력하세요."
-          name="inputValue"
-        />
-      </div>
       {!loadingCheck &&
         (user ? (
           <button onClick={() => onLogoutBtn()}>로그아웃</button>

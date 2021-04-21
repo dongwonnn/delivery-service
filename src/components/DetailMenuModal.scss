@@ -35,65 +35,64 @@ $blue: #4eacf8;
         color: #a4adb8;
       }
     }
-  }
-
-  .detail-modal-price {
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    p {
-      font-weight: bold;
-    }
-  }
-
-  .detail-modal-count {
-    padding: 10px 0;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    p {
-      font-weight: bold;
-    }
-  }
-
-  .detail-modal-count-btn {
-    display: flex;
-    align-items: center;
-    p {
-      padding: 0 10px;
-    }
-    button {
-      width: 30px;
-      height: 30px;
-      background-color: white;
-      border-radius: 100%;
-      border: 0.5px solid #939daa;
-    }
-  }
-
-  .detail-modal-select-menus {
-    .menus-group {
-      .menus-group-name {
-        background-color: $grey;
-        padding: 10px;
-        display: flex;
-        justify-content: space-between;
-        p:nth-child(1) {
-          font-weight: bold;
-          font-size: 1rem;
-        }
-        p:nth-child(2) {
-          color: $orange;
-          font-size: 1rem;
-        }
+    .detail-modal-price {
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      p {
+        font-weight: bold;
       }
-      .menus-group-menu {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-        input {
-          margin-right: 5px;
+    }
+
+    .detail-modal-count {
+      padding: 10px 0;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        font-weight: bold;
+      }
+    }
+
+    .detail-modal-count-btn {
+      display: flex;
+      align-items: center;
+      p {
+        padding: 0 10px;
+      }
+      button {
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        border-radius: 100%;
+        border: 0.5px solid #939daa;
+      }
+    }
+
+    .detail-modal-select-menus {
+      .menus-group {
+        .menus-group-name {
+          background-color: $grey;
+          padding: 10px;
+          display: flex;
+          justify-content: space-between;
+          p:nth-child(1) {
+            font-weight: bold;
+            font-size: 1rem;
+          }
+          p:nth-child(2) {
+            color: $orange;
+            font-size: 1rem;
+          }
+        }
+        .menus-group-menu {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          input {
+            margin-right: 5px;
+          }
         }
       }
     }
@@ -121,5 +120,18 @@ $blue: #4eacf8;
     width: 100%;
     height: 100%;
     max-width: 768px;
+
+    .detail-model-submit {
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      button {
+        background-color: $blue;
+        width: 100%;
+        height: 50px;
+        color: white;
+      }
+    }
   }
 }
