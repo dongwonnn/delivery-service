@@ -2,10 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './AllStores.scss';
 import { AiFillStar } from 'react-icons/ai';
-import { stores } from '../data/stores';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getStores } from '../reducers/data';
-const AllStores = () => {
+const AllStores = ({ stores }) => {
   // const stores = useSelector((state) => state.data.stores);
   // const loadingStores = useSelector((state) => state.data.GET_STORES);
 

@@ -3,7 +3,7 @@ import RectCat from '../components/RectCat';
 import { BsSearch } from 'react-icons/bs';
 import { stores } from '../data/stores';
 import './SearchPage.scss';
-import SearchStores from '../components/SearchStores';
+import AllStores from '../components/AllStores';
 
 const SearchPage = () => {
   const [inputValue, setInputValue] = useState('');
@@ -37,7 +37,7 @@ const SearchPage = () => {
           onChange={onChangeInput}
         />
       </div>
-      {inputValue === '' ? <RectCat /> : <SearchStores stores={sortStores} />}
+      {inputValue === '' ? <RectCat /> : <AllStores stores={sortStores} />}
     </div>
   );
 };

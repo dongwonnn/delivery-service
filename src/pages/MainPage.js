@@ -3,6 +3,7 @@ import AllCat from '../components/AllCat';
 import AllStores from '../components/AllStores';
 import Banner from '../components/Banner';
 import Sort from '../components/Sort';
+import { stores } from '../data/stores';
 import './MainPage.scss';
 
 const MainPage = () => {
@@ -17,7 +18,7 @@ const MainPage = () => {
         </div>
         <Sort />
       </div>
-      <AllStores />
+      <AllStores stores={stores} />
     </div>
   );
 };
