@@ -46,7 +46,6 @@ const App = () => {
         <>
           <Header />
           <Navbar />
-
           <Route path="/" exact={true} component={MainPage} />
           <Route path="/search" component={SearchPage} />
           <Route path="/detail/:storeId" exact={true} component={DetailPage} />
