@@ -1,13 +1,75 @@
-## Delivery Service Web With Redux Saga
+# 배달 서비스 클론코딩
 
-#### 클린 코드 참고 사이트 [LINK](https://jae04099.tistory.com/entry/React-%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%81%B4%EB%A6%B0-%EC%BD%94%EB%93%9C-%EA%B9%94%EB%81%94%ED%95%98%EA%B3%A0-%EB%8D%94-%EB%82%98%EC%9D%80-%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%93%B8-%EC%88%98-%EC%9E%88%EB%8A%94-%EA%B0%84%EB%8B%A8%ED%95%9C-%EB%B0%A9%EB%B2%95%EB%93%A4)
+이전에 진행했던 프로젝트에 **백엔드, Redux, Redux Saga**를 추가한 프로젝트 입니다.
+
+이전 프로젝트 : [https://github.com/dongwonnn/delivery-service-web](https://github.com/dongwonnn/delivery-service-web)
+
+url : [https://dongwonnn.github.io/delivery-service](https://dongwonnn.github.io/delivery-service)
+
+Test ID/PW : test5@naver.com / 12345678
+
+## 👨‍💻 기술 스택
+
+<h3 align="center">  
+  FrontEnd
+</h3>
+<p align="center">  
+  <img src="https://img.shields.io/badge/HTML-white?logo=html5"/>
+  <img src= "https://img.shields.io/badge/CSS-blue?logo=css3"/>
+  <img src= "https://img.shields.io/badge/SCSS-pink?logo=sass"/>
+  <img src= "https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript"/>
+  <img src= "https://img.shields.io/badge/React-blue?logo=react"/>
+  <img src= "https://img.shields.io/badge/Redux-593D88?logo=Redux&logoColor=white"/>
+  <img src= "https://img.shields.io/badge/ReduxSaga-white?logo=Redux-saga&logoColor=green"/>
+</p>
+
+<h3 align="center">  
+  BackEnd
+</h3>
+<p align="center">  
+  <img src="https://img.shields.io/badge/Laravel
+-FF2D20?logo=Laravel&logoColor=white
+"/>
+  <img src= "https://img.shields.io/badge/PHP-777BB4?logo=PHP&logoColor=white"/>
+  <img src= "https://img.shields.io/badge/MySQL-4479A1?logo=MySQL&logoColor=white"/>
+</p>
+
+<h3 align="center">  
+  Cooperation
+</h3>
+<p align="center">
+  <img src="https://img.shields.io/badge/GitHub-100000?logo=github" />
+  <img src= "https://img.shields.io/badge/Git-FF4500?logo=git&logoColor=white"/>
+  <img src= "https://img.shields.io/badge/Slack-4A154B?logo=slack"/>
+  <img src= "https://img.shields.io/badge/Swagger-85EA2D?logo=Swagger&logoColor=white""/>
+
+</p>
+
+## ⚙️ 추가 기능
+
+- 반응형 웹 구현
+- JWT 토큰 기반 로그인 인증
+- Redux, Redux Saga 적용
+- UI 기능 ( Modal, Scroll Spy, Infinity Scroll, Drag Scroll)
+
+## 📚 프로젝트 정리 글
+
+- [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.03/03.05.md) Github Actions / Pages를 이용한 CI/CD 설정
+- [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.04/04.02.md) JWT 인증 구현, CORS 이슈 해결
+- [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.03/03.17.md) Redux Saga를 이용한 api 요청 상태 관리
+- [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.03/03.25.md) Redux-persist 사용하여 새로고침 해도 Store 유지
+- [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.03/03.30.md) IntersectionObserver 이용해 Infinity Scroll 구현
+- [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.04/04.10.md) Modal, dim 컴포넌트 구현
+- [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.04/04.15.md) 페이지 이동 시 스크롤 높이 최상단으로 고정하기
+- [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.05/05.09.md) 특정 컴포넌트 특정 페이지에서 제거하기
 
 ### 개발 기록
+
+<details>
 
 #### [0319]
 
 - [x] 메뉴 카테고리별 scroll spy 기능 구현
-- [ ] scrollIntoView 작동
 
 #### [0322]
 
@@ -65,10 +127,7 @@
 - [x] login, register 성공했다면, initialForm을 통해 input 값들 초기화 시키기
 - [x] scroll spy 재구현
 - [x] infinity scorll 구현
-- [ ] 프론트단에서 할 수 있는 로그인 기능 구현 ( 이메일형식, 비밀번호 형식... )
 - [x] jwt 이용한 로그인 구현
-- [ ] 장바구니에 담겨있을 때 다른 가게 장바구니 넣을 시 장바구니 초기화
-- [ ] Radio box 데이터 검증 ( 필수 선택 카테고리 )
 - [x] redux saga로 데이터 가져올 때 이전에 있던 데이터 안보이게 처리
 - [x] CORS, PROXY 문제
 - [x] 리덕스 사가를 이용한 페이지 이동
@@ -88,3 +147,5 @@
 - [x] 특정 컴포넌트에 nav 적용 제외시키기
 - [x] 객체 속성 접근자. 객체[key값] = value
 - [x] input value undefined 처리 : || ''
+
+</details>
