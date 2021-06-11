@@ -47,10 +47,10 @@ Test ID/PW : test5@naver.com / 12345678
 
 ## ⚙️ 추가 기능
 
-- 반응형 웹 구현
-- JWT 토큰 기반 로그인 인증
-- Redux, Redux Saga 적용
-- UI 기능 ( Modal, Scroll Spy, Infinity Scroll, Drag Scroll)
+- **반응형 웹** 구현
+- **JWT 토큰** 로그인 인증
+- **Redux, Redux Saga** 적용
+- **UI 기능** ( Modal, Scroll Spy, Infinity Scroll, Drag Scroll )
 
 ## 📚 프로젝트 정리 글
 
