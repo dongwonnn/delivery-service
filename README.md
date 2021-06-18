@@ -61,6 +61,7 @@ Test ID/PW : test5@naver.com / 12345678
 - [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.03/03.30.md) IntersectionObserver 이용해 Infinity Scroll 구현
 - [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.04/04.10.md) Modal, dim 컴포넌트 구현
 - [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.04/04.15.md) 페이지 이동 시 스크롤 높이 최상단으로 고정하기
+- [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.04/04.21.md) 마우스 드래그로 좌우 스크롤 구현하기
 - [🔗 Link](https://github.com/dongwonnn/TIL/blob/main/21.05/05.09.md) 특정 컴포넌트 특정 페이지에서 제거하기
 
 ### 개발 기록
